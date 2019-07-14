@@ -1,0 +1,4 @@
+.add-new-parking__editor .ql-container,
+.add-new-parking__editor .ql-editor {
+  min-height: 400px;
+}
