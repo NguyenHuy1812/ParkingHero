@@ -15,9 +15,10 @@ import BlogPosts from "./views/BlogPosts";
 import SignUp from "./views/SignUp"
 import SignIn from "./views/SignIn"
 export default [
+ 
   {
-    path: "/",
-    exact: true,
+    path: "/blog-overview",
+    exact: false,
     layout: DefaultLayout,
     component: () => <Redirect to="/blog-overview" />
   },
