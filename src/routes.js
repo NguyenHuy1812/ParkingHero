@@ -2,7 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 // Layout Types
-import { DefaultLayout } from "./layouts";
+import { DefaultLayout}from "./layouts";
+import {SignInLayout , SignUpLayout} from "./layouts";
 
 // Route Views
 import BlogOverview from "./views/BlogOverview";
@@ -14,13 +15,16 @@ import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
 import SignUp from "./views/SignUp"
 import SignIn from "./views/SignIn"
+import AllBuildingNearly from "./views/AllBuildingNearly"
+import ManageBuilding from "./views/ManageBuilding"
+
 export default [
  
   {
-    path: "/blog-overview",
-    exact: false,
-    layout: DefaultLayout,
-    component: () => <Redirect to="/blog-overview" />
+    path: "/",
+    exact: true,
+  layout: SignInLayout,
+    component: () => <Redirect to="/sign-in" />
   },
   {
     path: "/blog-overview",
@@ -36,6 +40,11 @@ export default [
     path: "/add-new-parking",
     layout: DefaultLayout,
     component: AddNewPost
+  },
+  {
+    path: "/building",
+    layout: DefaultLayout,
+    component: AllBuildingNearly
   },
   {
     path: "/errors",
@@ -59,16 +68,17 @@ export default [
   },
   {
     path: "/sign-up",
-    layout: DefaultLayout,
+    layout: SignUpLayout,
     component: SignUp
   },
   {
     path: "/sign-in",
-    layout: DefaultLayout,
+    layout: SignInLayout,
     component: SignIn
   },
   {
-    path: "/testing",
-    
+    path: "/manage/building",
+    layout:  DefaultLayout,
+    component: ManageBuilding
   }
 ];

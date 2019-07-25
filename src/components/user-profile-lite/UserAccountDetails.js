@@ -15,7 +15,8 @@ import {
   Button
 } from "shards-react";
 
-const UserAccountDetails = ({ title }) => (
+const UserAccountDetails = ({ title, user }) => (
+
   <Card small className="mb-4">
     <CardHeader className="border-bottom">
       <h6 className="m-0">{title}</h6>
@@ -32,8 +33,8 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feFirstName"
                     placeholder="First Name"
-                    value="Sierra"
-                    onChange={() => {}}
+                    value={user.username}
+                    onChange={() => { }}
                   />
                 </Col>
                 {/* Last Name */}
@@ -42,8 +43,8 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feLastName"
                     placeholder="Last Name"
-                    value="Brooks"
-                    onChange={() => {}}
+                    value={user.username}
+                    onChange={() => { }}
                   />
                 </Col>
               </Row>
@@ -55,8 +56,8 @@ const UserAccountDetails = ({ title }) => (
                     type="email"
                     id="feEmail"
                     placeholder="Email Address"
-                    value="sierra@example.com"
-                    onChange={() => {}}
+                    value={user.email}
+                    onChange={() => { }}
                     autoComplete="email"
                   />
                 </Col>
@@ -68,7 +69,7 @@ const UserAccountDetails = ({ title }) => (
                     id="fePassword"
                     placeholder="Password"
                     value="EX@MPL#P@$$w0RD"
-                    onChange={() => {}}
+                    onChange={() => { }}
                     autoComplete="current-password"
                   />
                 </Col>
@@ -79,7 +80,7 @@ const UserAccountDetails = ({ title }) => (
                   id="feAddress"
                   placeholder="Address"
                   value="1234 Main St."
-                  onChange={() => {}}
+                  onChange={() => { }}
                 />
               </FormGroup>
               <Row form>
@@ -89,7 +90,7 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feCity"
                     placeholder="City"
-                    onChange={() => {}}
+                    onChange={() => { }}
                   />
                 </Col>
                 {/* State */}
@@ -106,7 +107,7 @@ const UserAccountDetails = ({ title }) => (
                   <FormInput
                     id="feZipCode"
                     placeholder="Zip"
-                    onChange={() => {}}
+                    onChange={() => { }}
                   />
                 </Col>
               </Row>

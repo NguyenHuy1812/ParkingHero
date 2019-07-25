@@ -1,157 +1,110 @@
-import React from "react";
-import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
-
+import React, { useEffect } from "react";
+import { Container, Row, Col, Card, CardHeader, CardBody, CardFooter } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
+import Moment from 'react-moment';
+var moment = require('moment');
 
-const Tables = () => (
-  <Container fluid className="main-content-container px-4">
-    {/* Page Header */}
-    <Row noGutters className="page-header py-4">
-      <PageTitle sm="4" title="Add New Post" subtitle="add-new-parking" className="text-sm-left" />
-    </Row>
 
-    {/* Default Light Table */}
-    <Row>
-      <Col>
-        <Card small className="mb-4">
-          <CardHeader className="border-bottom">
-            <h6 className="m-0">Active Users</h6>
-          </CardHeader>
-          <CardBody className="p-0 pb-3">
-            <table className="table mb-0">
-              <thead className="bg-light">
-                <tr>
-                  <th scope="col" className="border-0">
-                    #
-                  </th>
-                  <th scope="col" className="border-0">
-                    First Name
-                  </th>
-                  <th scope="col" className="border-0">
-                    Last Name
-                  </th>
-                  <th scope="col" className="border-0">
-                    Country
-                  </th>
-                  <th scope="col" className="border-0">
-                    City
-                  </th>
-                  <th scope="col" className="border-0">
-                    Phone
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Ali</td>
-                  <td>Kerry</td>
-                  <td>Russian Federation</td>
-                  <td>Gdańsk</td>
-                  <td>107-0339</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Clark</td>
-                  <td>Angela</td>
-                  <td>Estonia</td>
-                  <td>Borghetto di Vara</td>
-                  <td>1-660-850-1647</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Jerry</td>
-                  <td>Nathan</td>
-                  <td>Cyprus</td>
-                  <td>Braunau am Inn</td>
-                  <td>214-4225</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Colt</td>
-                  <td>Angela</td>
-                  <td>Liberia</td>
-                  <td>Bad Hersfeld</td>
-                  <td>1-848-473-7416</td>
-                </tr>
-              </tbody>
-            </table>
-          </CardBody>
-        </Card>
-      </Col>
-    </Row>
+const Tables = ({ data, user, token, getUserinfor }) => {
+  console.log('##### table tab', user, data)
+  useEffect(() => {
+    getUserinfor(token)
+  }, [token])
+  
+  return (
+    <Container fluid className="main-content-container px-4">
+      {/* Page Header */}
+      <Row noGutters className="page-header py-4">
+        <PageTitle sm="4" title="Order History" subtitle="History transaction" className="text-sm-left" />
+      </Row>
 
-    {/* Default Dark Table */}
-    <Row>
-      <Col>
-        <Card small className="mb-4 overflow-hidden">
-          <CardHeader className="bg-dark">
-            <h6 className="m-0 text-white">Active Users</h6>
-          </CardHeader>
-          <CardBody className="bg-dark p-0 pb-3">
-            <table className="table table-dark mb-0">
-              <thead className="thead-dark">
-                <tr>
-                  <th scope="col" className="border-0">
-                    #
+      {/* Default Light Table */}
+      <Row>
+        <Col>
+          <Card small className="mb-4">
+            <CardHeader className="border-bottom">
+              <h6 className="m-0">Your history booking</h6>
+            </CardHeader>
+            <CardBody className="p-0 pb-3">
+              {/* ############################### */}
+              <table className="table mb-0">
+                <thead className="bg-light">
+                  <tr>
+                    <th scope="col" className="border-0">
+                      #
                   </th>
-                  <th scope="col" className="border-0">
-                    First Name
+                    <th scope="col" className="border-0">
+                      Order
                   </th>
-                  <th scope="col" className="border-0">
-                    Last Name
+
+                    <th scope="col" className="border-0">
+                      Time Check in
                   </th>
-                  <th scope="col" className="border-0">
-                    Country
+                    <th scope="col" className="border-0">
+                      Time Check out
                   </th>
-                  <th scope="col" className="border-0">
-                    City
+                    <th scope="col" className="border-0">
+                      Total time
                   </th>
-                  <th scope="col" className="border-0">
-                    Phone
+                    <th scope="col" className="border-0">
+                      Price /hour
                   </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Ali</td>
-                  <td>Kerry</td>
-                  <td>Russian Federation</td>
-                  <td>Gdańsk</td>
-                  <td>107-0339</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Clark</td>
-                  <td>Angela</td>
-                  <td>Estonia</td>
-                  <td>Borghetto di Vara</td>
-                  <td>1-660-850-1647</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Jerry</td>
-                  <td>Nathan</td>
-                  <td>Cyprus</td>
-                  <td>Braunau am Inn</td>
-                  <td>214-4225</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Colt</td>
-                  <td>Angela</td>
-                  <td>Liberia</td>
-                  <td>Bad Hersfeld</td>
-                  <td>1-848-473-7416</td>
-                </tr>
-              </tbody>
-            </table>
-          </CardBody>
-        </Card>
-      </Col>
-    </Row>
-  </Container>
-);
+                    <th scope="col" className="border-0">
+                      Status
+                  </th>
+
+                    <th scope="col" className="border-0">
+                      Total Bill
+                  </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data && data.transactions && data.transactions.filter(tran => tran.status === 'success').slice(0,20).map((trans, idx) =>
+                    <tr>
+                      <td> {idx + 1} </td>
+                      <td>{trans.id}</td>
+                      <td> {moment(trans.time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}</td>
+                      {trans.time_check_out ?
+                        <td>  {moment(trans.time_check_out).utc().format('DD-MM-YYYY HH:mm:ss')}</td> :
+                        <td></td>}
+                      {trans.time_check_out ?
+                        <td> <Moment to={trans.time_check_out}>{trans.time_check_in}</Moment></td> :
+                        <td>
+                        </td>
+                      }
+                      <td>{trans.price} $</td>
+                      <td>{trans.status}</td>
+                      <td>{trans.totalbill} $</td>
+
+
+                    </tr>
+                  )}
+
+
+                </tbody>
+              </table>
+              {/* 3######################### */}
+            </CardBody>
+            <CardFooter>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+
+            </CardFooter>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Default Dark Table */}
+
+    </Container>
+  )
+};
 
 export default Tables;

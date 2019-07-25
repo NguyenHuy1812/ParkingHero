@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import {
   ListGroup,
   ListGroupItem,
@@ -11,48 +11,43 @@ import {
   FormSelect,
   Button
 } from "shards-react";
+
+
+
 class CompleteFormExample extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
       user: {
-         username:'hello Huy',
-         password:'password'
-        
+         username:'',
+         email: '',
+         password:'',
+         location: ''
         }
     }
   }
   handleChange = (event) => {
-    console.log('this.state', this.state)
-    // this.setState({
-    //   ...this.state.user,
-    //   user:{
-    //     [event.target.name] : event.target.value
-    //   }
-  // })
       this.setState({
         user:{
            ...this.state.user,
           [event.target.name] : event.target.value
         } 
       }) 
-      
-    
     event.preventDefault();
   }
 handleSubmit = (event) => {
-  alert('A name was submitted: ' + this.state.user.username);
+  alert('You already signup: ' + this.state.user.username);
   this.loginUser(this.state.user , this.state.password)
   event.preventDefault();
 }
-loginUser = (username,password, token) => {
-  fetch('http://127.0.0.1:5000/testJson', {
+loginUser = (username,password, email, location) => {
+  fetch('http://127.0.0.1:5000/login', {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ "user": username, 'password': password })
+    body: JSON.stringify({ "username": username,"email":email, 'password': password, 'location':location })
   }).then(res => res.json())
     .then(res => console.log(res))
 }
@@ -61,17 +56,25 @@ CompleteForm = () => (
     <ListGroupItem className="p-3">
       <Row>
         <Col>
-       
-      
           <Form  onSubmit = {(event)=> this.handleSubmit(event)}>
             <Row form>
+            <Col md="6" className="form-group">
+                <label htmlFor="feEmailAddress">Username: {this.state.user.username}</label>
+                <FormInput
+                  onChange = {(event)=> this.handleChange(event)}
+                  id="feEmailAddress"
+                  type="text"
+                  name ='username'
+                  placeholder="Username"
+                />
+              </Col>
               <Col md="6" className="form-group">
-                <label htmlFor="feEmailAddress">Email: {this.state.user.username}</label>
+                <label htmlFor="feEmailAddress">Email: {this.state.user.email}</label>
                 <FormInput
                   onChange = {(event)=> this.handleChange(event)}
                   id="feEmailAddress"
                   type="email"
-                  name ='username'
+                  name ='email' 
                   placeholder="Email"
                 />
               </Col>
@@ -137,8 +140,8 @@ CompleteForm = () => (
       this.CompleteForm()
     )
   }
-}
 
+}
 
 
 

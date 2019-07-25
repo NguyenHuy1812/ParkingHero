@@ -1,173 +1,332 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Container, Row, Col } from "shards-react";
+import React, { useEffect , useState } from "react";
+import {
+  FormInput, Container, Button, Row, Col, Card, CardHeader,CardBody,CardFooter
+} from "shards-react";
 
-import PageTitle from "./../components/common/PageTitle";
-import SmallStats from "./../components/common/SmallStats";
-import UsersOverview from "./../components/blog/UsersOverview";
-import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
+import PageTitle from "../components/common/PageTitle";
+import Moment from 'react-moment';
+import Countdown from 'react-countdown-now';
 
-const BlogOverview = ({ smallStats }) => (
-  <Container fluid className="main-content-container px-4">
-    {/* Page Header */}
+var moment = require('moment');
+
+
+const BlogOverview = ({  getUserinfor, token, data, user, checkOut,checkIn,bookLot  }) => {
+  const [price, setPrice] = useState(0)
+  // const [value, setValue] = useState(0)
+  // setTimeout(()=> setValue(value+ 1), 3000)
+  useEffect(() => { getUserinfor(token) }, [token])
+console.log('fhwediwefuihweufhweufih', data)
+  return (
+
+    <  Container fluid className="main-content-container px-4 pb-4">
+      {/* Page Header */}
+      <Row noGutters className="page-header py-4">
+        <PageTitle sm="4" title="Your current check-in lot" subtitle="add-new-parking" className="text-sm-left" />
+      </Row>
+      
+{/* // ################################# */}
+{data ?
+  <Row>
+    {data.parkings.map((park, idx) => (
+      <Col lg="6" sm="12" className="mb-4" key={idx}>
+        <Card small className="card-post h-100">
+          <h5 className="card-title">
+            <a className="text-fiord-blue" href="#">
+              Lot No: {idx + 1} {park.name} 
+            </a>
+          </h5>
+          <CardBody >
+            <Row>
+              <Col sm='1'>
+                <div style={{ backgroundColor: `${(park.status_color)}`, width: '0.5rem', height: '5rem' }}></div>
+              </Col>
+              <Col sm='4'>
+                <h5 className="card-title">
+                  <a className="text-fiord-blue" href="#">
+                    Status: {park.status}
+                  </a>
+                </h5>
+                <h5> Price: {park.price} $ / hour</h5>
+                {/* <h5> You have 15 minute to checkin</h5> */}
+              </Col>
+              {park.owneruser &&
+                <Col sm='7'>
+                  <h5 className="card-title">
+                    <a className="text-fiord-blue" >
+                    Building name:   {park.parkinglot.buildingname}
+                    </a>
+                  </h5>
+                  <h5 className="card-title">
+                    {park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
+                      <a className="text-fiord-blue" >
+                      Checkin: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                      </a>
+                      :
+                      <a className="text-fiord-blue" >
+                        Booking:    {moment(park.time_booking).utc().format('DD-MM-YYYY HH:mm:ss')}
+                      </a>}
+                      
+                  </h5>
+                  
+                </Col>
+              }
+            </Row>
+          </CardBody>
+          {user.username && park.owneruser && park.owneruser.name == user.username && park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
+            //If current user the same with book_by user
+            <CardFooter className="text-muted border-top py-3">
+              <span className="d-inline-block">
+
+                <Button onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
+                  CheckOut {park.transaction[0].id}
+                </Button>
+              </span>
+            </CardFooter>
+            :
+            //If current user not the same( can )
+            <CardFooter className="text-muted border-top py-3">
+              {user.username && park.owneruser && park.owneruser.name == user.username &&
+
+                <span className="d-inline-block">
+
+                  <Button onClick={() => { bookLot(token, park.id) }} outline size="sm" theme="danger" className="mb-2 mr-1">
+                    {park.status == 'Available' ?
+                      'Booking!' : 'Reverse'
+                    }
+                  </Button>
+                  <Button onClick={() => { checkIn(token, park.id) }} outline size="sm" theme="warning" className="mb-2 mr-1">
+                    Checkin!
+       </Button>
+                </span>
+              }
+              <span className="d-inline-block">
+                {user.username && park.owneruser == null ?
+                  <Button onClick={() => { bookLot(token, park.id) }} outline size="sm" theme="success" className="mb-2 mr-1">
+                    Booking!
+        </Button>
+                  : null}
+              </span>
+            </CardFooter>
+          }
+        </Card>
+      </Col>
+    ))}
+  </Row>:
+  null}
+ 
+{/* // ################################ */}
+
+<Row>
+      <Col>
+        <Card small className="mb-4">
+          <CardHeader className="border-bottom">
+            <h6 className="m-0">Your order now booking</h6>
+          </CardHeader>
+          <CardBody className="p-0 pb-3">
+            <table className="table mb-0">
+              <thead className="bg-light">
+                <tr>
+                  <th scope="col" className="border-0">
+                    #
+                  </th>
+                  <th scope="col" className="border-0">
+                    Order
+                  </th>
+                  
+                  <th scope="col" className="border-0">
+                    Time Check in
+                  </th>
+                  <th scope="col" className="border-0">
+                    Time Check out
+                  </th>
+                  <th scope="col" className="border-0">
+                    Total time
+                  </th>
+                  <th scope="col" className="border-0">
+                    Price /hour
+                  </th>
+                  <th scope="col" className="border-0">
+                    Status
+                  </th>
+                 
+                  <th scope="col" className="border-0">
+                    Total Bill
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+             { data && data.transactions &&  data.transactions.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
+                <tr>
+                    <td> {idx + 1 } </td>
+                    <td>{trans.id}</td>
+                    <td> {moment(trans.time_check_in).utc().format('DD-MM-YYYY HH:mm:ss') }</td>
+                    {trans.time_check_out ?
+                    <td>  {moment(trans.time_check_out).utc().format('DD-MM-YYYY HH:mm:ss')}</td>:
+                    <td></td>}
+                    {trans.time_check_out ?
+                    <td> <Moment to ={trans.time_check_out}>{trans.time_check_in}</Moment></td> : 
+                    <td>
+                    </td>
+                     }
+                     <td>{trans.price} $</td>
+                    <td>{trans.status}</td>
+                    <td>{trans.totalbill} $</td>
+
+                    
+                    </tr>
+              )}  
+                
+                
+              </tbody>
+            </table>
+          </CardBody>
+        </Card>
+      </Col>
+    </Row>
+     
     <Row noGutters className="page-header py-4">
-      <PageTitle title="Blog Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
-    </Row>
+        <PageTitle sm="4" title="Your Buidling information" subtitle="Current situation" className="text-sm-left" />
+      </Row>
+    {/* building infor */}
+   
+      {data.building && data.building[0] && data.building[0].parkings &&
+        <Row>
+          {data.building.map((name, idx) => (
+            <Col lg="6" sm="12" className="mb-4" key={idx}>
+              <Card small className="card-post h-100">
+                <h5 className="card-title text-fiord-blue">
+               
+                    Building : {name.buildingname}
+                 
+                </h5>
+                <h5 className="card-title text-fiord-blue">
+                 
+                    Location: {name.location}
+                 
+                </h5>
+                <CardBody >
+                  <Row>
+                    <Col sm='1'>
+                      {name.parkings.filter(parking => parking.status == 'Available').length === 0 ?
+                        <div style={{ backgroundColor: `red`, width: '0.5rem', height: '5rem' }}></div>
+                        :
+                        <div style={{ backgroundColor: `green`, width: '0.5rem', height: '5rem' }}></div>
+                      }
+                    </Col>
+                    <Col sm='5'>
+                    
+                        <h5 className="text-fiord-blue">
+                          Total Lot:  {name.parkings.length}
+                        </h5>
+          
+                    </Col>
+                    <Col sm='6'>
+                      <h5 className="card-title text-fiord-blue">
+                        
+                          Available Lot:  {name.parkings.filter(parking => parking.status === 'Available').length}
+                      
+                      </h5>
+                      <h5 className="card-title">
+                      </h5>
+                      <p className="card-text"></p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    
+                  </Row>
+                  
+                </CardBody>
+                <CardFooter className="text-muted border-top py-3">
+                  <span className="d-inline-block">
 
-    {/* Small Stats Blocks */}
+                    <Button href={'http://localhost:3000/parking-slot/' + name.id} outline size="sm" theme="secondary" className="mb-2 mr-1">
+                      See list of parking for this
+               </Button>
+
+                  </span>
+                </CardFooter>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      
+      }
+    {/* buidling infor########################### */}
+    {/* talble black for building infor */}
     <Row>
-      {smallStats.map((stats, idx) => (
-        <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
-          <SmallStats
-            id={`small-stats-${idx}`}
-            variation="1"
-            chartData={stats.datasets}
-            chartLabels={stats.chartLabels}
-            label={stats.label}
-            value={stats.value}
-            percentage={stats.percentage}
-            increase={stats.increase}
-            decrease={stats.decrease}
-          />
-        </Col>
-      ))}
+      <Col>
+        <Card small className="mb-4 overflow-hidden">
+          <CardHeader className="bg-dark">
+            <h6 className="m-0 text-white">Your building nearly Order</h6>
+          </CardHeader>
+          <CardBody className="bg-dark p-0 pb-3">
+            <table className="table table-dark mb-0">
+              <thead className="thead-dark">
+              <tr>
+                  <th scope="col" className="border-0">
+                    #
+                  </th>
+                  <th scope="col" className="border-0">
+                    Order
+                  </th>
+                  
+                  <th scope="col" className="border-0">
+                    Time Check in
+                  </th>
+                  <th scope="col" className="border-0">
+                    Time Check out
+                  </th>
+                  <th scope="col" className="border-0">
+                    Total time
+                  </th>
+                  <th scope="col" className="border-0">
+                    Price /hour
+                  </th>
+                  <th scope="col" className="border-0">
+                    Status
+                  </th>
+                 
+                  <th scope="col" className="border-0">
+                    Total Bill
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {data && data.building && data.building[0] && data.building[0].totaltransaction &&
+              data.building[0].totaltransaction.slice(0,19).map((trans, idx)=>
+              <tr>
+              <td> {idx + 1} </td>
+              <td>{trans.id}</td>
+              <td> {moment(trans.time_check_in).utc().format('DD-MM-YYYY HH:mm:ss') }</td>
+              {trans.time_check_out ?
+              <td>  {moment(trans.time_check_out).utc().format('DD-MM-YYYY HH:mm:ss')}</td>:
+              <td></td>}
+              {trans.time_check_out ?
+              <td> <Moment to ={trans.time_check_out}>{trans.time_check_in}</Moment></td> : 
+              <td>
+              </td>
+               }
+               <td>{trans.price} $</td>
+              <td>{trans.status}</td>
+              <td>{trans.totalbill} $</td>
+
+              
+              </tr>
+              )}  
+              </tbody>
+            </table>
+          </CardBody>
+        </Card>
+      </Col>
     </Row>
+    {/* end############################## */}
 
-    <Row>
-      {/* Users Overview */}
-      <Col lg="8" md="12" sm="12" className="mb-4">
-        <UsersOverview />
-      </Col>
 
-      {/* Users by Device */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
-      </Col>
 
-      {/* New Draft */}
-      <Col lg="4" md="6" sm="12" className="mb-4">
-        <NewDraft />
-      </Col>
-
-      {/* Discussions */}
-      <Col lg="5" md="12" sm="12" className="mb-4">
-        <Discussions />
-      </Col>
-
-      {/* Top Referrals */}
-      <Col lg="3" md="12" sm="12" className="mb-4">
-        <TopReferrals />
-      </Col>
-    </Row>
-  </Container>
-);
-
-BlogOverview.propTypes = {
-  /**
-   * The small stats dataset.
-   */
-  smallStats: PropTypes.array
+    </Container>
+  )
 };
 
-BlogOverview.defaultProps = {
-  smallStats: [
-    {
-      label: "Posts",
-      value: "2,390",
-      percentage: "4.7%",
-      increase: true,
-      chartLabels: [null, null, null, null, null, null, null],
-      attrs: { md: "6", sm: "6" },
-      datasets: [
-        {
-          label: "Today",
-          fill: "start",
-          borderWidth: 1.5,
-          backgroundColor: "rgba(0, 184, 216, 0.1)",
-          borderColor: "rgb(0, 184, 216)",
-          data: [1, 2, 1, 3, 5, 4, 7]
-        }
-      ]
-    },
-    {
-      label: "Pages",
-      value: "182",
-      percentage: "12.4",
-      increase: true,
-      chartLabels: [null, null, null, null, null, null, null],
-      attrs: { md: "6", sm: "6" },
-      datasets: [
-        {
-          label: "Today",
-          fill: "start",
-          borderWidth: 1.5,
-          backgroundColor: "rgba(23,198,113,0.1)",
-          borderColor: "rgb(23,198,113)",
-          data: [1, 2, 3, 3, 3, 4, 4]
-        }
-      ]
-    },
-    {
-      label: "Comments",
-      value: "8,147",
-      percentage: "3.8%",
-      increase: false,
-      decrease: true,
-      chartLabels: [null, null, null, null, null, null, null],
-      attrs: { md: "4", sm: "6" },
-      datasets: [
-        {
-          label: "Today",
-          fill: "start",
-          borderWidth: 1.5,
-          backgroundColor: "rgba(255,180,0,0.1)",
-          borderColor: "rgb(255,180,0)",
-          data: [2, 3, 3, 3, 4, 3, 3]
-        }
-      ]
-    },
-    {
-      label: "New Customers",
-      value: "29",
-      percentage: "2.71%",
-      increase: false,
-      decrease: true,
-      chartLabels: [null, null, null, null, null, null, null],
-      attrs: { md: "4", sm: "6" },
-      datasets: [
-        {
-          label: "Today",
-          fill: "start",
-          borderWidth: 1.5,
-          backgroundColor: "rgba(255,65,105,0.1)",
-          borderColor: "rgb(255,65,105)",
-          data: [1, 7, 1, 3, 1, 4, 8]
-        }
-      ]
-    },
-    {
-      label: "Subscribers",
-      value: "17,281",
-      percentage: "2.4%",
-      increase: false,
-      decrease: true,
-      chartLabels: [null, null, null, null, null, null, null],
-      attrs: { md: "4", sm: "6" },
-      datasets: [
-        {
-          label: "Today",
-          fill: "start",
-          borderWidth: 1.5,
-          backgroundColor: "rgb(0,123,255,0.1)",
-          borderColor: "rgb(0,123,255)",
-          data: [3, 2, 3, 2, 4, 5, 4]
-        }
-      ]
-    }
-  ]
-};
+
 
 export default BlogOverview;

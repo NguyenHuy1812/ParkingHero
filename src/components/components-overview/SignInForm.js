@@ -6,97 +6,43 @@ import {
   Col,
   Form,
   FormInput,
-  FormGroup,
-  FormCheckbox,
-  FormSelect,
   Button
 } from "shards-react";
-class SignInForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { 
-      user: {
-         username:'hello Huy',
-         password:'password'
-        
-        }
-    }
-  }
-  handleChange = (event) => {
-    console.log('this.state', this.state)
-    // this.setState({
-    //   ...this.state.user,
-    //   user:{
-    //     [event.target.name] : event.target.value
-    //   }
-  // })
-      this.setState({
-        user:{
-           ...this.state.user,
-          [event.target.name] : event.target.value
-        } 
-      }) 
-      
-    
-    event.preventDefault();
-  }
-handleSubmit = (event) => {
-  alert('A name was submitted: ' + this.state.user.username);
-  this.loginUser(this.state.user , this.state.password)
-  event.preventDefault();
-}
-loginUser = (username,password, token) => {
-  fetch('http://127.0.0.1:5000/testJson', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ "user": username, 'password': password })
-  }).then(res => res.json())
-    .then(res => console.log(res))
-}
-CompleteForm = () => (
+
+const SignInForm = () =>(
 <ListGroup flush>
     <ListGroupItem className="p-3">
       <Row>
         <Col>
-          <Form  onSubmit = {(event)=> this.handleSubmit(event)}>
+          <Form >
             <Row form>
               <Col md="6" className="form-group">
-                <label htmlFor="feEmailAddress">Email: {this.state.user.username}</label>
+                <label htmlFor="feEmailAddress">Email: </label>
                 <FormInput
-                  onChange = {(event)=> this.handleChange(event)}
+                 
                   id="feEmailAddress"
                   type="email"
-                  name ='username'
+                  name ='email'
                   placeholder="Email"
                 />
               </Col>
               <Col md="6">
-                <label htmlFor="fePassword">Password : {this.state.user.password}</label>
+                <label htmlFor="fePassword">Password :  </label>
                 <FormInput
-                  onChange = {(event)=> this.handleChange(event)}
-                  id="fePassword"
-                  type="password"
-                  name = "password"
-                  placeholder="Password"
+               
+                
+                type="password"
+                name = "password"
+                placeholder="Password"
                 />
               </Col>
             </Row>
-            <Button >Sign In</Button>
+            <Button >Log In</Button>
           </Form>
         </Col>
       </Row>
     </ListGroupItem>
   </ListGroup>
-)
-  render () {
-    console.log('this.state when render', this.state)
-    return (
-     
-      this.CompleteForm()
-    )
-  }
-}
+) 
+
 export default SignInForm;

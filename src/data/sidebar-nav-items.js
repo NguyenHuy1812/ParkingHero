@@ -7,10 +7,16 @@ export default function() {
       htmlAfter: ""
     },
     {
-      title: "Parking Slot",
+      title: "Building Nearly",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/parking-slot",
+      to: "/building",
     },
+    {
+      title: "Manage your building",
+      htmlBefore: '<i class="material-icons">vertical_split</i>',
+      to: `/manage/building`,
+    },
+    
     {
       title: "Add New Parking",
       htmlBefore: '<i class="material-icons">note_add</i>',

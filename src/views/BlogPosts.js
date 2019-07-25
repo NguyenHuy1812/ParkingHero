@@ -1,6 +1,6 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -8,163 +8,146 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Badge,
   Button
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import Countdown from 'react-countdown-now';
+import Moment from 'react-moment';
 
-
-class BlogPosts extends React.Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      // First list of posts.
-      PostsListOne: [
-        {
-          backgroundImage: require("../images/content-management/1.jpeg"),
-          category: "Business",
-          categoryTheme: "dark",
-          author: "Anna Kunis",
-          authorAvatar: require("../images/avatars/1.jpg"),
-          title: "Conduct at an replied removal an amongst",
-          body:
-            "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
-          date: "28 February 2019"
-        },
-        {
-          backgroundImage: require("../images/content-management/2.jpeg"),
-          category: "Travel",
-          categoryTheme: "info",
-          author: "James Jamerson",
-          authorAvatar: require("../images/avatars/2.jpg"),
-          title: "Off tears are day blind smile alone had ready",
-          body:
-            "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-          date: "29 February 2019"
-        },
-        {
-          backgroundImage: require("../images/content-management/3.jpeg"),
-          category: "Technology",
-          categoryTheme: "royal-blue",
-          author: "Jimmy Jackson",
-          authorAvatar: require("../images/avatars/2.jpg"),
-          title: "Difficult in delivered extensive at direction",
-          body:
-            "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-          date: "29 February 2019"
-        },
-        {
-          backgroundImage: require("../images/content-management/4.jpeg"),
-          category: "Business",
-          categoryTheme: "warning",
-          author: "John James",
-          authorAvatar: require("../images/avatars/3.jpg"),
-          title: "It so numerous if he may outlived disposal",
-          body:
-            "How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved ready road market resolution...",
-          date: "29 February 2019"
-        }
-      ],
-
-      // Second list of posts.
-      PostsListTwo: [
-        {
-          backgroundImage: require("../images/content-management/5.jpeg"),
-          category: "Travel",
-          categoryTheme: "info",
-          author: "Anna Ken",
-          authorAvatar: require("../images/avatars/0.jpg"),
-          title:
-            "Attention he extremity unwilling on otherwise cars backwards yet",
-          body:
-            "Conviction up partiality as delightful is discovered. Yet jennings resolved disposed exertion you off. Left did fond drew fat head poor jet pan flying over...",
-          date: "29 February 2019"
-        },
-        {
-          backgroundImage: require("../images/content-management/6.jpeg"),
-          category: "Business",
-          categoryTheme: "dark",
-          author: "John James",
-          authorAvatar: require("../images/avatars/1.jpg"),
-          title:
-            "Totally words widow one downs few age every seven if miss part by fact",
-          body:
-            "Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education to admitted speaking...",
-          date: "29 February 2019"
-        }
-      ],
-
-  }
-      
-  }
-
-  componentDidMount() {
-    this.fetchdata()
-    console.log('componentDidmount', this.state.PostsListFive)
-    
-   
-  }
-  fetchdata() {
-    fetch('http://127.0.0.1:5000/testJson', {
+var moment = require('moment');
+const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut }) => {
+  const [parking, setParking] = useState('')
+  const id = window.location.pathname.split("/").slice(-1)[0]
+  useEffect(() => {
+    getUserinfor(token)
+  }, [token]);
+  useEffect(() => {
+    fetch(`https://127.0.0.1:5000/data/building/${id}`, {
       method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      },
     }).then(results => results.json())
-      .then(data => this.setState({ building: data.data[0].building[0],
-                                    user :   data.data[0]        
-                                                      }))
-      .catch(function (error) { console.log(error) });
-  }
-  render() {
-    console.log('hello blogpost', this.props)
-    const {
-      building
-    } = this.state;
-    return (
-      <Container fluid className="main-content-container px-4">
-        {/* Page Header */}
-        <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title="add-new-parking" subtitle="Components" className="text-sm-left" />
-        </Row>
+      .then(data => setParking(data.data))
+      .catch(function (error) { console.log(error) })
+  }, [token, data])
+  
+  const hello = () =>{ alert("hello")}
+console.log("data in blogpost component", parking)
+  return (
 
-         {building ?
+    <Container fluid className="main-content-container px-4">
+      {/* Page Header */}
+
+      {parking && 
+        <Row noGutters className="page-header py-4">
+          <PageTitle sm="4" title={parking.buildingname} subtitle="Building Name" className="text-sm-left" />
+        </Row>
+      }
+
+      {parking &&
         <Row>
-          {building.parkings.map((park, idx) => (
+          {parking.parkings.map((park, idx) => (
             <Col lg="6" sm="12" className="mb-4" key={idx}>
               <Card small className="card-post h-100">
-                <div
-                  className="card-post__image"
-                  style={{ backgroundImage: `url('${park.name}')` }}
-                />
-                <CardBody>
+                <h5 className="card-title">
+                  <a className="text-fiord-blue" href="#">
+                    Parking name: {park.name} {idx + 1}
+                  </a>
+                </h5>
+                <CardBody >
+                <Row>
+                    <Col sm = '1'>
+                    <div style={{backgroundColor: `${(park.status_color)}`, width: '0.5rem', height: '5rem'}}></div>
+                    </Col>
+                    <Col sm = '4'>
                   <h5 className="card-title">
                     <a className="text-fiord-blue" href="#">
-                    Parking name: {park.name}
+                      Status: {park.status}
                     </a>
                   </h5>
-                  <p className="card-text"></p>
-                </CardBody>
-                <CardFooter className="text-muted border-top py-3">
-                  <span className="d-inline-block">
-                    Owner by: {this.state.user.username}
-                    <a className="text-fiord-blue" href = ''>
+                  <h5> Price: {park.price} $ / hour</h5>
+                  {/* <h5> You have 15 minute to checkin</h5> */}
+                    </Col>
+                    {park.owneruser &&
+                    <Col sm='7'>
+                        <h5 className="card-title">
+                          <a className="text-fiord-blue" >
+                            Book by:   {park.owneruser.name}    
+                          </a>
+                        </h5>
+                        <h5 className="card-title">
+                        {park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ? 
+                        <a className="text-fiord-blue" >
+                        Checkin: {moment(park.transaction[0].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss') }  
+
+                      </a>
+:  
+                        <a className="text-fiord-blue" >
+                        Booking:    {moment(park.time_booking).utc().format('DD-MM-YYYY HH:mm:ss') }
+                        <a> ( You have 15 minute to check-in ) </a>
+
+
+                        
+                        </a>}
+                      </h5>
+                     
+                    </Col>
+                    }
                     
-                    </a>{" "}
-                    in Builingname: {this.state.building.buildingname}
-                    {/* <a className="text-fiord-blue" href={post.categoryUrl}>
-                      {post.category}
-                    </a> */}
+                  </Row>
+                 
+                </CardBody>
+                {user.username && park.owneruser && park.owneruser.name == user.username  && park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ? 
+                  
+                <CardFooter className="text-muted border-top py-3">
+                    <span className="d-inline-block">   
+                      
+                      <Button onClick ={()=>{checkOut(token,park.id,park.transaction[0].id)}} outline size="sm" theme="primary" className="mb-2 mr-1">
+                      CheckOut {park.transaction[0].id}
+                      </Button>
                   </span>
+                  
                 </CardFooter>
+                : 
+                <CardFooter className="text-muted border-top py-3">
+                {user.username && park.owneruser && park.owneruser.name == user.username  &&
+
+                  <span className="d-inline-block">
+                   
+                    <Button onClick ={()=>{bookLot(token,park.id)}} outline size="sm" theme="danger" className="mb-2 mr-1">
+                     {park.status == 'Available' ?
+                          'Booking!' : 'Reverse'
+                        }
+                     </Button>
+                     <Button onClick ={()=>{checkIn(token,park.id)}} outline size="sm" theme="warning" className="mb-2 mr-1">
+                     Checkin!
+                     </Button>
+                    
+                    </span>
+                    }
+                    <span className="d-inline-block">   
+                      { user.username && park.owneruser == null ? 
+                      <Button onClick ={()=>{bookLot(token,park.id)}} outline size="sm" theme="success" className="mb-2 mr-1">
+                      Booking!
+                      </Button>
+                      : null }
+                      
+                  </span>
+                  
+                </CardFooter>
+                }
               </Card>
             </Col>
           ))}
         </Row>
-         
-         : null}
-      </Container>
-    );
-  }
-}
+      }
 
+    </Container>
+
+  );
+}
 export default BlogPosts;

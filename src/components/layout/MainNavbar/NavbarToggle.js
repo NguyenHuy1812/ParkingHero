@@ -16,6 +16,7 @@ class NavbarToggle extends React.Component {
   }
 
   render() {
+
     return (
       <nav className="nav">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

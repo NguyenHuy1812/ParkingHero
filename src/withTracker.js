@@ -24,7 +24,6 @@ const withTracker = (WrappedComponent, options = {}) => {
     componentDidMount() {
       // eslint-disable-next-line
       const page = this.props.location.pathname + this.props.location.search;
-      const user = 'huy';
       trackPage(`${BASENAME}${page}`);
     }
 
@@ -39,7 +38,6 @@ const withTracker = (WrappedComponent, options = {}) => {
       }
     }
     render() 
-    {console.log('hello',this.props.initialState)
       return <WrappedComponent {...this.props} />;
     }
   };
