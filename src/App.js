@@ -23,7 +23,7 @@ class App extends React.Component {
         spassword: '',
         sconfirm: '',
         building_name: '',
-
+        saddress:''
       },
       redirect: false, 
       background: false,
@@ -100,6 +100,7 @@ class App extends React.Component {
     })
     event.preventDefault();
     this.registerUser(this.state.user.susername, this.state.user.spassword, this.state.user.sconfirm, this.state.user.semail, this.state.user.saddress)
+    console.log('ewofjweofijwoeifj', this.state)
   }
   registerUser = (susername, spassword, sconfirm, semail, building_name, address) => {
    
