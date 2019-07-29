@@ -242,7 +242,7 @@ class App extends React.Component {
     return (
      <Router basename={process.env.REACT_APP_BASENAME || ""}>
         <div>
-          {this.state.redirect && <Redirect to="/building-overview" />}
+          {this.state.redirect && <Redirect exact="true" to="../building-overview" />}
           {routes.map((route, index) => {
             
             return (
