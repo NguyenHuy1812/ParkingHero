@@ -43,7 +43,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
                 <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="https://hero-park.netlify.com//sign-in">Log In</a>
+                <a class="nav-link js-scroll-trigger" href="https://hero-park.netlify.com/sign-in">Log In</a>
               </li>
             </ul>
           </div>
