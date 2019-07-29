@@ -5,19 +5,28 @@ import { Container, Row, Col } from "shards-react";
 import MainFooter from "../components/layout/MainFooter";
 
 const SignInLayout = ({ children, noNavbar, noFooter }) => (
-  <Container fluid>
+  <Container
+  style ={{
+    backgroundImage:'url("../img/hero.jpg")',
+    // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'scroll',
+    backgroundZize: 'cover',
+    width: '100%'
+  }}>
     <Row>
       {/* <MainSidebar /> */}
       <Col
         className="main-content p-0"
-        lg={{ size: 10, offset: 2 }}
-        md={{ size: 9, offset:  3 }}
+        lg={{ size: 12, offset: '' }}
+        md={{ size: 12  , offset:  "" }}
         sm="12"
         tag="main"
       >
         {/* {!noNavbar && <MainNavbar />} */}
         {children}
-        {!noFooter && <MainFooter />}
+        
       </Col>
     </Row>
   </Container>

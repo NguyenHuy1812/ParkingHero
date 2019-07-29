@@ -1,8 +1,8 @@
 export default function() {
   return [
     {
-      title: "Blog Dashboard",
-      to: "/blog-overview",
+      title: "Hero Dashboard",
+      to: "/building-overview",
       htmlBefore: '<i class="material-icons">edit</i>',
       htmlAfter: ""
     },
@@ -13,22 +13,22 @@ export default function() {
     },
     {
       title: "Manage your building",
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
+      htmlBefore: '<i class="material-icons">note_add</i>',
       to: `/manage/building`,
     },
     
     {
-      title: "Add New Parking",
-      htmlBefore: '<i class="material-icons">note_add</i>',
+      title: "Your current booking",
+      htmlBefore: '<i class="material-icons">view_module</i>',
       to: "/add-new-parking",
     },
+    // {
+    //   title: "Forms & Components",
+    //   htmlBefore: '<i class="material-icons">view_module</i>',
+    //   to: "/components-overview",
+    // },
     {
-      title: "Forms & Components",
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: "/components-overview",
-    },
-    {
-      title: "Tables",
+      title: "History order",
       htmlBefore: '<i class="material-icons">table_chart</i>',
       to: "/tables",
     },
@@ -37,10 +37,10 @@ export default function() {
       htmlBefore: '<i class="material-icons">person</i>',
       to: "/user-profile-lite",
     },
-    {
-      title: "Errors",
-      htmlBefore: '<i class="material-icons">error</i>',
-      to: "/errors",
-    }
+    // {
+    //   title: "Errors",
+    //   htmlBefore: '<i class="material-icons">error</i>',
+    //   to: "/errors",
+    // }
   ];
 }

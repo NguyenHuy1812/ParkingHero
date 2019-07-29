@@ -67,7 +67,7 @@ console.log('qwiudhqiudhqwudhqwudhqwud', data)
                       </a>}
                       
                   </h5>
-                  <Countdown date={Date.now() + 100000} />,
+                 
                 </Col>
               }
             </Row>
@@ -80,6 +80,50 @@ console.log('qwiudhqiudhqwudhqwudhqwud', data)
                 <Button onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
                   CheckOut {park.transaction[0].id}
                 </Button>
+                <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                        Open ticket Parking
+                </Button>
+            
+              {/*modallllllll ##########################Modal */}
+
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <Card>
+                          <div class="modal-dialog" role="document" >
+                           
+                            <div class="modal-content">
+                              <CardHeader class="modal-header">
+                              <h4>Ticket Infor</h4>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Building:  {park.parkinglot.buildingname}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Park Name: {park.name}</h5>
+                              </CardHeader>
+                              <CardBody class="modal-body">
+                                <Row>
+                              <Col>
+                              <img
+                              src={park.transaction[0].ticket_qrcode}
+                          
+                              width="200"
+                  />
+                              </Col>
+                              <Col>
+                              Time check-in: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                              </Col>
+                                </Row>
+                              </CardBody>
+                              <div class="modal-footer">
+                              <Button data-dismiss="modal" onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
+                              CheckOut {park.transaction[0].id}  
+                              </Button>     
+                              <Button type="button" outline size="sm" theme="primary" className="mb-2 mr-1" data-dismiss="modal">
+                              Close 
+                              </Button>     
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </Card>
+                      </div>
+                      {/* ################################# */}
               </span>
             </CardFooter>
             :
@@ -104,6 +148,7 @@ console.log('qwiudhqiudhqwudhqwudhqwud', data)
                   <Button onClick={() => { bookLot(token, park.id) }} outline size="sm" theme="success" className="mb-2 mr-1">
                     Booking!
         </Button>
+
                   : null}
               </span>
             </CardFooter>

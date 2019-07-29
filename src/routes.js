@@ -2,8 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 // Layout Types
-import { DefaultLayout}from "./layouts";
-import {SignInLayout , SignUpLayout} from "./layouts";
+import { DefaultLayout, SignInLayout , IndexLayout}from "./layouts";
+
 
 // Route Views
 import BlogOverview from "./views/BlogOverview";
@@ -13,7 +13,7 @@ import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
-import SignUp from "./views/SignUp"
+import Index from "./views/Index"
 import SignIn from "./views/SignIn"
 import AllBuildingNearly from "./views/AllBuildingNearly"
 import ManageBuilding from "./views/ManageBuilding"
@@ -23,11 +23,11 @@ export default [
   {
     path: "/",
     exact: true,
-  layout: SignInLayout,
-    component: () => <Redirect to="/sign-in" />
+    layout: IndexLayout,
+    component: Index
   },
   {
-    path: "/blog-overview",
+    path: "/building-overview",
     layout: DefaultLayout,
     component: BlogOverview
   },
@@ -65,11 +65,6 @@ export default [
     path: "/parking-slot",
     layout: DefaultLayout,
     component: BlogPosts
-  },
-  {
-    path: "/sign-up",
-    layout: SignUpLayout,
-    component: SignUp
   },
   {
     path: "/sign-in",

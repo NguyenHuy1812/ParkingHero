@@ -37,13 +37,13 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
 
   })
   
-  // useEffect(() => {
-  //   getUserinfor(token)
-  // }, [token])
+  useEffect(() => {
+    getUserinfor(token)
+  }, [token])
   useEffect(() => {
     setUserinfor(user)
   }, [user])
-  const updateUser = (token, firstname, lastname, email, phone, address) => {
+  const updateUser = (token, firstname, lastname, email, phone, address, avatar) => {
     console.log('hello')
     fetch('https://127.0.0.1:5000/user/data', {
       method: 'POST',
@@ -52,7 +52,7 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
         'Content-Type': 'application/json',
         'Authorization': `Token ${token}`
       },
-      body: JSON.stringify({ "firstname": firstname, 'lastname': lastname, 'email': email,'test':'test',  'phone': phone  , 'address': address})
+      body: JSON.stringify({ "firstname": firstname, 'lastname': lastname, 'email': email,'test':'test',  'phone': phone  , 'address': address, 'avatar': avatar})
     }).then(res => res.json())
       .then(res => {
         if (res === 'success!'){
@@ -62,7 +62,7 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
         }
     })
   }
-  const updateBuilding = (token, buildingname, buildingcontact, location, description, totalparkingslot) => {
+  const updateBuilding = (token, buildingname, buildingcontact, location, description, totalparkingslot , image_url) => {
     alert('Success updated!!!!!...')
     fetch('https://127.0.0.1:5000/updatebuilding', {
       method: 'POST',
@@ -76,7 +76,8 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
         "buildingcontact": buildingcontact,
         "location": location,
         "description": description,
-        "totalparkingslot": totalparkingslot
+        "totalparkingslot": totalparkingslot,
+        "image_url": image_url
       })
     }).then(res => res.json())
   }
@@ -220,6 +221,23 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
                             />
                           </Col>
                         </Row>
+                        <Row form>
+                          {/* Description */}
+                          <Col md="12" className="form-group">
+                            <label htmlFor="feDescription">image_url</label>
+                            <FormTextarea id="feDescription" rows="5"
+                              type="contact"
+                              id="feContact"
+                              placeholder="Contact"
+                              value={userinfor.profile[0].avatar_url}
+                              onChange={(evt) => setUserinfor({ ...userinfor, 
+                                ...userinfor.profile.map(prof => prof.avatar_url = evt.target.value)
+                              
+                              })}
+                            />
+                          </Col>
+                        </Row>
+
                         <FormGroup>
                           <label htmlFor="feAddress">Address</label>
                           <FormSelect
@@ -236,10 +254,9 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
                              <option > {locale}</option>
                           )}
                          </FormSelect>
-                         <FormFeedback valid>The first name looks good!</FormFeedback>
                         </FormGroup>
-                  
-                        <Button theme="accent" onClick={() => { updateUser(token, userinfor.profile[0].first_name, userinfor.profile[0].last_name, userinfor.email, userinfor.profile[0].phone,  userinfor.profile[0].address ) }}>Update Account</Button>
+
+                        <Button theme="accent" onClick={() => { updateUser(token, userinfor.profile[0].first_name, userinfor.profile[0].last_name, userinfor.email, userinfor.profile[0].phone,  userinfor.profile[0].address , userinfor.profile[0].avatar_url ) }}>Update Account</Button>
                       </Form>
                     </Col>
                   </Row>
@@ -355,7 +372,19 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
                           </FormSelect>
                           
                         </FormGroup>
-
+                        <Row form>
+                          {/* Description */}
+                          <Col md="12" className="form-group">
+                            <label htmlFor="feDescription">image_url</label>
+                            <FormTextarea id="feDescription" rows="5"
+                              value={building.image_url}
+                              onChange={(evt) => setBuilding({
+                                ...building,
+                                image_url: evt.target.value
+                              })}
+                            />
+                          </Col>
+                        </Row>
 
                         <Row form>
                           {/* Description */}

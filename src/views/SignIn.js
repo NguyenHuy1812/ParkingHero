@@ -17,8 +17,6 @@ import {
 
 } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
-import Forms from "../components/components-overview/Forms";
-import SignInForm from "../components/components-overview/SignInForm";
 
 const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, handleSubmitRegister }) => {
   useEffect(() => {
@@ -30,16 +28,19 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
     'District 12', 'District GoVap', 'District PhuNhuan', 'District HocMon','District BinhChanh'
   ]
   return (
-    <Container fluid className="main-content-container px-4 pb-4">
+    <Container fluid className="main-content-container px-4 pb-4 "
+    >
       {/* Page Header */}
       <Col sm="12">
-        <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title="Welcome to PakingCar"  className="text-sm-left" />
+        <Row  noGutters className="page-header py-4 text-center">
+          <PageTitle  sm="12" title="WELCOME TO HERO PARK!"  className="text-lg-center" />
         </Row>
       </Col>
       <Row>
         {/* Editor */}
-        <Col lg="6" className="mb-4">
+        <Col lg = '2'></Col>
+        
+        <Col lg="8" className="">
           <Card small>
             <CardHeader className="border-bottom">
               <h6 className="m-0">Sign In :</h6>
@@ -51,7 +52,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                   <Col>
                     <Form >
                       <Row form>
-                        <Col md="4">
+                        <Col md="6">
                           <label htmlFor="feEmailAddress">Username : </label>
                           <FormInput
                             value={user.username}
@@ -64,7 +65,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                           />
                         </Col>
                        
-                        <Col md="4">
+                        <Col md="6">
                           <label htmlFor="fePassword">Password : </label>
                           <FormInput
                             value={user.password}
@@ -89,8 +90,11 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
           </Card>
           {/* Complete Form Example */}
         </Col>
-
-        <Col lg="6" className="mb-4">
+        <Col lg = '2'></Col>
+        </Row>
+        <Row>
+        <Col lg = '2'></Col>
+        <Col lg="8" className="mb-6">
           <Card small>
             <CardHeader className="border-bottom">
               <h6 className="m-0">Sign up Form:</h6>
@@ -100,7 +104,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                 <Row>
                   <Col>
                     <Form  >
-                      <Row form onSubmit={(evt) => handleSubmitRegister(evt)}>
+                      <Row form >
                         <Col md="6" className="form-group">
                           <label htmlFor="feEmailAddress">Username:  </label>
                           <FormInput
@@ -157,6 +161,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                            name="saddress"
                            
                           >
+                            <option value = ''>Choose...</option>
                           {locale.map((locale, idx)=>
                               
                              <option > {locale}</option>
@@ -166,7 +171,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                       
                      
                      
-                      <Button type = 'submit'  >Sign Up</Button>
+                      <Button type = 'submit' onClick ={(evt) => handleSubmitRegister(evt)}   >Sign Up</Button>
                     </Form>
                   </Col>
                 </Row>
@@ -176,14 +181,13 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
           </Card>
 
         </Col>
-
+        <Col lg = '2'></Col>
 
 
 
       </Row>
-      <Row>
-      <SignInForm/>
-      </Row>
+      
+     
     </Container>
   )
 };

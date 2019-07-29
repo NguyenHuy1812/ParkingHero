@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody, CardFooter } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
 import Moment from 'react-moment';
@@ -7,10 +7,15 @@ var moment = require('moment');
 
 const Tables = ({ data, user, token, getUserinfor }) => {
   console.log('##### table tab', user, data)
+  const [page,setPage] = useState({
+                          page1: '',
+                          page2: 'none',
+                          page3: 'none'
+  })
   useEffect(() => {
     getUserinfor(token)
   }, [token])
-  
+  console.log("######################", page)
   return (
     <Container fluid className="main-content-container px-4">
       {/* Page Header */}
@@ -58,9 +63,12 @@ const Tables = ({ data, user, token, getUserinfor }) => {
                   </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {data && data.transactions && data.transactions.filter(tran => tran.status === 'success').slice(0,20).map((trans, idx) =>
-                    <tr>
+                <tbody className = "pagination-container">
+                
+                  {data && data.transactions && data.transactions.filter(
+                                          tran => tran.status === 'success').slice(0,20).map((trans, idx) =>
+                    
+                   <tr  data-page = '1' style = {{display: page.page1}}>
                       <td> {idx + 1} </td>
                       <td>{trans.id}</td>
                       <td> {moment(trans.time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}</td>
@@ -78,10 +86,34 @@ const Tables = ({ data, user, token, getUserinfor }) => {
 
 
                     </tr>
+           
+                  )}
+                  {data && data.transactions && data.transactions.filter(
+                                          tran => tran.status === 'success').slice(20,40).map((trans, idx) =>
+                    
+                   <tr  data-page = '2' style = {{display: page.page2}}>
+                      <td> {idx + 21} </td>
+                      <td>{trans.id}</td>
+                      <td> {moment(trans.time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}</td>
+                      {trans.time_check_out ?
+                        <td>  {moment(trans.time_check_out).utc().format('DD-MM-YYYY HH:mm:ss')}</td> :
+                        <td></td>}
+                      {trans.time_check_out ?
+                        <td> <Moment to={trans.time_check_out}>{trans.time_check_in}</Moment></td> :
+                        <td>
+                        </td>
+                      }
+                      <td>{trans.price} $</td>
+                      <td>{trans.status}</td>
+                      <td>{trans.totalbill} $</td>
+
+
+                    </tr>
+           
                   )}
 
-
                 </tbody>
+                
               </table>
               {/* 3######################### */}
             </CardBody>
@@ -89,9 +121,9 @@ const Tables = ({ data, user, token, getUserinfor }) => {
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a onClick = {()=>setPage({page1: '', page2: 'none', page3: 'none'})}class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a onClick = {()=>setPage({page1: 'none', page2: '', page3: 'none'})} class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a onClick = {()=>setPage({page1: 'none', page2: 'none', page3: ''})}class="page-link" href="#">3</a></li>
                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
               </nav>

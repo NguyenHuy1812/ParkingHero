@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      total: '',
       building: '',
       data: '',
       token: '',
@@ -24,25 +25,30 @@ class App extends React.Component {
         building_name: '',
 
       },
-      redirect: false
+      redirect: false, 
+      background: false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitRegister = this.handleSubmitRegister.bind(this);
-
   }
 
-
-
+  
   componentDidMount = () => {
     this.checkAcessToken()
-
+    this.checkInterval = setInterval( () =>  this.getUserinfor(this.state.token), 900000);
+    
 
   }
+  componentWillUnmount = () => {
+    clearInterval(this.checkInterval);
+  }
+
+
   checkAcessToken = () => {
     const existingToken = sessionStorage.getItem('token');
     const accessToken = (window.location.search.split("=")[0] === "?api_key") ? window.location.search.split("=")[1] : null;
-    if (!accessToken && !existingToken && window.location.pathname !== "/sign-in") {
+    if (!accessToken && !existingToken && window.location.pathname !== "/sign-in" && window.location.pathname!=="/") {
       window.location.replace(`http://localhost:3000/sign-in`)
     }
     if (accessToken) {
@@ -93,25 +99,26 @@ class App extends React.Component {
       }
     })
     event.preventDefault();
-    this.registerUser(this.state.user.susername, this.state.user.spassword, this.state.user.sconfirm, this.state.user.semail)
+    this.registerUser(this.state.user.susername, this.state.user.spassword, this.state.user.sconfirm, this.state.user.semail, this.state.user.saddress)
   }
-  registerUser = (susername, spassword, sconfirm, semail, building_name) => {
+  registerUser = (susername, spassword, sconfirm, semail, building_name, address) => {
+   
     fetch('https://127.0.0.1:5000/user/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "sname": susername, 'spassword': spassword, 'sconfirm': sconfirm, 'semail': semail, 'building_name': building_name })
+      body: JSON.stringify({ "sname": susername, 'spassword': spassword, 'sconfirm': sconfirm, 'semail': semail, 'building_name': building_name, 'saddress': address })
     }).then(res => res.json())
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else{console.log(res)}})
+       }        else return  alert((Object.keys(res)[0]).slice(1) + ': ' +res[Object.keys(res)[0]][0])
+      })
     
   }
   loginUser = (username, password) => {
-    alert('token login')
     fetch('https://127.0.0.1:5000/user/signin', {
       method: 'POST',
       headers: {
@@ -125,7 +132,7 @@ class App extends React.Component {
         if (res.status === 'ok') {
           alert('Login!!!!!!!!!!!')
           return window.location.replace(`http://localhost:3000/sign-in?api_key=${res.token}`)
-        } else return alert('Fail')
+        } else return console.log(res.error)
       })
   }
   getUserinfor = (token) => {
@@ -138,6 +145,7 @@ class App extends React.Component {
       },
     }).then(results => results.json())
       .then(data => this.setState({
+        total: data.total,
         data: data.data,
         user: {
           username: data.data.name,
@@ -147,6 +155,7 @@ class App extends React.Component {
         }
       }))
       .catch(function (error) { console.log(error) });
+      
   }
   logoutUser = (token) => {
     fetch('https://127.0.0.1:5000/logout', {
@@ -202,7 +211,7 @@ class App extends React.Component {
     }).then(res => res.json())
       .then(this.setState({}, this.getUserinfor(token)))
   }
-  addMoreParkingLot = (token, building_id , price) => {
+  addMoreParkingLot = (token, building_id , price, name, nums) => {
     alert('Success add...')
     fetch('https://127.0.0.1:5000/addparking', {
       method: 'POST',
@@ -211,7 +220,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
         'Authorization': `Token ${token}`
       },
-      body: JSON.stringify({ "building_id": building_id  , "price": price})
+      body: JSON.stringify({ "building_id": building_id  , "price": price , "name": name , "nums": nums})
     }).then(res => res.json())
       .then(this.setState({}, this.getUserinfor(token)))
   }
@@ -228,17 +237,20 @@ class App extends React.Component {
       .then(this.setState({}, this.getUserinfor(token)))
   }
   render() {
+    console.log('data', this.state.data)
     return (
      <Router basename={process.env.REACT_APP_BASENAME || ""}>
         <div>
-          {this.state.redirect && <Redirect to="/blog-overview" />}
+          {this.state.redirect && <Redirect to="/building-overview" />}
           {routes.map((route, index) => {
+            
             return (
               <Route
                 key={index}
                 path={route.path}
                 exact={route.exact}
                 {...this.state}
+                
                 render={() =>
                   <route.layout {...this.state} logout={this.logout}>
                     <route.component
@@ -256,7 +268,7 @@ class App extends React.Component {
                       checkIn = {this.checkIn}
                       checkOut = {this.checkOut}
                     />
-
+                  
                   </route.layout>
                 }
               />

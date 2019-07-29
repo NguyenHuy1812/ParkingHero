@@ -8,16 +8,18 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Button
+  Button, 
+  CardHeader
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
-import Countdown from 'react-countdown-now';
-import Moment from 'react-moment';
+
 
 var moment = require('moment');
 const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut }) => {
   const [parking, setParking] = useState('')
+  const [original, setOriginal] = useState('')
+  const [search, setSearch] = useState( '')
   const id = window.location.pathname.split("/").slice(-1)[0]
   useEffect(() => {
     getUserinfor(token)
@@ -33,10 +35,24 @@ const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut 
     }).then(results => results.json())
       .then(data => setParking(data.data))
       .catch(function (error) { console.log(error) })
-  }, [token, data])
-  
-  const hello = () =>{ alert("hello")}
+  }, [token, data ])
+  useEffect(() => {
+    fetch(`https://127.0.0.1:5000/data/building/${id}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      },
+    }).then(results => results.json())
+      .then(data => setOriginal(data.data))
+      .catch(function (error) { console.log(error) })
+  }, [token, data ])
+  useEffect(()=>{
+    original   &&  setParking({...parking,parkings : original.parkings.filter(park => park.status === search)})
+  },[search])
 console.log("data in blogpost component", parking)
+console.log("original in blogpost component", original)
   return (
 
     <Container fluid className="main-content-container px-4">
@@ -47,17 +63,26 @@ console.log("data in blogpost component", parking)
           <PageTitle sm="4" title={parking.buildingname} subtitle="Building Name" className="text-sm-left" />
         </Row>
       }
-
+        <Row>
+        <Button onClick ={()=>setParking(original)} type="button" outline size="sm" theme="primary" className="mb-2 mr-1">
+                        All
+        </Button>
+        <Button onClick ={()=>setSearch('Available')} type="button" outline size="sm" theme="success" className="mb-2 mr-1">
+                        Available
+        </Button>
+        <Button onClick ={()=>setSearch('Booked')} type="button" outline size="sm" theme="danger" className="mb-2 mr-1">
+                        Booked!
+        </Button>
+        </Row>
       {parking &&
         <Row>
           {parking.parkings.map((park, idx) => (
             <Col lg="6" sm="12" className="mb-4" key={idx}>
               <Card small className="card-post h-100">
-                <h5 className="card-title">
-                  <a className="text-fiord-blue" href="#">
-                    Parking name: {park.name} {idx + 1}
-                  </a>
-                </h5>
+                <h5 className="card-title text-fiord-blue"> 
+                 {idx + 1}.  Parking name: {park.name} 
+               </h5>
+               <hr></hr>
                 <CardBody >
                 <Row>
                     <Col sm = '1'>
@@ -109,6 +134,53 @@ console.log("data in blogpost component", parking)
                       <Button onClick ={()=>{checkOut(token,park.id,park.transaction[0].id)}} outline size="sm" theme="primary" className="mb-2 mr-1">
                       CheckOut {park.transaction[0].id}
                       </Button>
+                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                        Open ticket Parking
+                </Button>
+              
+              {/*modallllllll ##########################Modal */}
+
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <Card>
+                          <div class="modal-dialog" role="document" >
+                            <Button type="button" class="Close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </Button>
+                           
+                            <div class="modal-content">
+                              <CardHeader class="modal-header">
+                              <h4>Ticket Infor</h4>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Building:  {park.parkinglot.buildingname}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Park Name: {park.name}</h5>
+                              </CardHeader>
+                              <CardBody class="modal-body">
+                                <Row>
+                              <Col>
+                              <img
+                              src={park.transaction[0].ticket_qrcode}
+                          
+                              width="200"
+                  />
+                              </Col>
+                              <Col>
+                              Time check-in: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                              </Col>
+                                </Row>
+                              </CardBody>
+                              <div class="modal-footer">
+                              <Button data-dismiss="modal" onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
+                              CheckOut {park.transaction[0].id}
+                              </Button>     
+                              <Button type="button" outline size="sm" theme="primary" className="mb-2 mr-1" data-dismiss="modal">
+                              Close 
+                              </Button>     
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </Card>
+                      </div>
+                      {/* ################################# */}
                   </span>
                   
                 </CardFooter>
