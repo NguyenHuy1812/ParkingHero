@@ -102,7 +102,7 @@ class App extends React.Component {
     this.registerUser(this.state.user.susername, this.state.user.spassword, this.state.user.sconfirm, this.state.user.semail, this.state.user.saddress)
     console.log('ewofjweofijwoeifj', this.state)
   }
-  registerUser = (susername, spassword, sconfirm, semail, building_name, address) => {
+  registerUser = (susername, spassword, sconfirm, semail, address) => {
    
     fetch('https://hero-park.herokuapp.com/user/signup', {
       method: 'POST',
@@ -110,7 +110,7 @@ class App extends React.Component {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "sname": susername, 'spassword': spassword, 'sconfirm': sconfirm, 'semail': semail, 'building_name': building_name, 'saddress': address })
+      body: JSON.stringify({ "sname": susername, 'spassword': spassword, 'sconfirm': sconfirm, 'semail': semail, 'saddress': address })
     }).then(res => res.json())
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
