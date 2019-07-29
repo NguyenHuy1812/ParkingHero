@@ -10,7 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      total: '',
       building: '',
       data: '',
       token: '',
@@ -146,7 +145,6 @@ class App extends React.Component {
       },
     }).then(results => results.json())
       .then(data => this.setState({
-        total: data.total,
         data: data.data,
         user: {
           username: data.data.name,

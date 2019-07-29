@@ -10,7 +10,7 @@ import Moment from 'react-moment';
 var moment = require('moment');
 
 
-const BlogOverview = ({ total, getUserinfor, token, data, user, checkOut,checkIn,bookLot  }) => {
+const BlogOverview = ({ getUserinfor, token, data, user, checkOut,checkIn,bookLot  }) => {
   const [page,setPage] = useState({
     page1: '',
     page2: 'none',
@@ -253,7 +253,7 @@ console.log('fhwediwefuihweufhweufih', total)
                 <h5 className="card-title text-fiord-blue">    
                     Location: {name.location}
                 </h5>
-                <h5><h5>Your building income: {total[0][1]} $</h5></h5>
+                {/* <h5><h5>Your building income: {total[0][1]} $</h5></h5> */}
                 <CardBody >
                   <Row>
                     <Col sm='1'>
