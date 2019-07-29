@@ -46,7 +46,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
     getUserinfor(token)
   }, [token, building]);
   const editParking = (token, idx, name, price) => {
-    fetch(`https://127.0.0.1:5000/parking/edit/${idx}`, {
+    fetch(`https://hero-park.herokuapp.com/parking/edit/${idx}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -62,7 +62,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
     window.location.replace(`http://localhost:3000/manage/building  `)
   }
   useEffect(() => {
-    fetch(`https://127.0.0.1:5000/manage/building`, {
+    fetch(`https://hero-park.herokuapp.com/manage/building`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -74,7 +74,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       .catch(function (error) { console.log(error) })
   }, [token, data])
   useEffect(() => {
-    fetch(`https://127.0.0.1:5000/manage/building`, {
+    fetch(`https://hero-park.herokuapp.com/manage/building`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -87,7 +87,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   }, [token, data])
   const addBuilding = (token, buildingname, buildingcontact, location, description, totalparkingslot) => {
 
-    fetch('https://127.0.0.1:5000/addbuilding', {
+    fetch('https://hero-park.herokuapp.com/addbuilding', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',

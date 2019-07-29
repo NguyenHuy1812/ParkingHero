@@ -45,7 +45,7 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
   }, [user])
   const updateUser = (token, firstname, lastname, email, phone, address, avatar) => {
     console.log('hello')
-    fetch('https://127.0.0.1:5000/user/data', {
+    fetch('https://hero-park.herokuapp.com/user/data', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -64,7 +64,7 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
   }
   const updateBuilding = (token, buildingname, buildingcontact, location, description, totalparkingslot , image_url) => {
     alert('Success updated!!!!!...')
-    fetch('https://127.0.0.1:5000/updatebuilding', {
+    fetch('https://hero-park.herokuapp.com/updatebuilding', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -82,7 +82,7 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
     }).then(res => res.json())
   }
   useEffect(() => {
-    fetch(`https://127.0.0.1:5000/manage/building`, {
+    fetch(`https://hero-park.herokuapp.com/manage/building`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',

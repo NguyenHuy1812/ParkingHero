@@ -41,5 +41,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "https://127.0.0.1:5000/"
+  "proxy": "https://hero-park.herokuapp.com/"
 }

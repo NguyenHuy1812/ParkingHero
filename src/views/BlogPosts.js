@@ -25,7 +25,7 @@ const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut 
     getUserinfor(token)
   }, [token]);
   useEffect(() => {
-    fetch(`https://127.0.0.1:5000/data/building/${id}`, {
+    fetch(`https://hero-park.herokuapp.com/data/building/${id}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -37,7 +37,7 @@ const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut 
       .catch(function (error) { console.log(error) })
   }, [token, data ])
   useEffect(() => {
-    fetch(`https://127.0.0.1:5000/data/building/${id}`, {
+    fetch(`https://hero-park.herokuapp.com/data/building/${id}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',

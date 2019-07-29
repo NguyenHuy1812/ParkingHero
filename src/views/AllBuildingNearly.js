@@ -26,7 +26,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
   ]
   const [search, setSearch] = useState('')
   useEffect(() => {
-    fetch('https://127.0.0.1:5000/data/building', {
+    fetch('https://hero-park.herokuapp.com/data/building', {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -39,7 +39,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
       )      
   }, [token, data , search ==='All' ])
   useEffect(() => {
-    fetch('https://127.0.0.1:5000/data/building', {
+    fetch('https://hero-park.herokuapp.com/data/building', {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
