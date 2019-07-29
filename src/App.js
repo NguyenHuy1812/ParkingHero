@@ -49,7 +49,7 @@ class App extends React.Component {
     const existingToken = sessionStorage.getItem('token');
     const accessToken = (window.location.search.split("=")[0] === "?api_key") ? window.location.search.split("=")[1] : null;
     if (!accessToken && !existingToken && window.location.pathname !== "/sign-in" && window.location.pathname!=="/") {
-      window.location.replace(`http://localhost:3000/sign-in`)
+      window.location.replace(`https://hero-park.netlify.com/sign-in`)
     }
     if (accessToken) {
       sessionStorage.setItem("token", accessToken);
@@ -103,7 +103,7 @@ class App extends React.Component {
   }
   registerUser = (susername, spassword, sconfirm, semail, building_name, address) => {
    
-    fetch('https://127.0.0.1:5000/user/signup', {
+    fetch('https://hero-park.herokuapp.com/user/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -119,7 +119,7 @@ class App extends React.Component {
     
   }
   loginUser = (username, password) => {
-    fetch('https://127.0.0.1:5000/user/signin', {
+    fetch('https://hero-park.herokuapp.com/user/signin', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -131,12 +131,12 @@ class App extends React.Component {
       .then(res => {
         if (res.status === 'ok') {
           alert('Login!!!!!!!!!!!')
-          return window.location.replace(`http://localhost:3000/sign-in?api_key=${res.token}`)
+          return window.location.replace(`https://hero-park.netlify.com/sign-in?api_key=${res.token}`)
         } else return console.log(res.error)
       })
   }
   getUserinfor = (token) => {
-    fetch('https://127.0.0.1:5000/user/data', {
+    fetch('https://hero-park.herokuapp.com/user/data', {
       method: 'GET',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -158,7 +158,7 @@ class App extends React.Component {
       
   }
   logoutUser = (token) => {
-    fetch('https://127.0.0.1:5000/logout', {
+    fetch('https://hero-park.herokuapp.com/logout', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -171,12 +171,12 @@ class App extends React.Component {
   }
   logout = (token) => {
     this.logoutUser(token)
-    window.location.replace('http://localhost:3000/sign-in')
+    window.location.replace('https://hero-park.netlify.com/sign-in')
     sessionStorage.clear()
 
   }
   bookLot = (token, idx) => {
-    fetch('https://127.0.0.1:5000/booking', {
+    fetch('https://hero-park.herokuapp.com/booking', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -188,7 +188,7 @@ class App extends React.Component {
       .then(this.setState({}, this.getUserinfor(token)))
   }
   checkIn = (token, idx) => {
-    fetch(`https://127.0.0.1:5000/parking/checkin/${idx}`, {
+    fetch(`https://hero-park.herokuapp.com/parking/checkin/${idx}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -200,7 +200,7 @@ class App extends React.Component {
       .then(this.setState({}, this.getUserinfor(token)))
   }
   checkOut = (token, park_id, trans_id) => {
-    fetch(`https://127.0.0.1:5000/parking/${park_id}/checkout/${trans_id}`, {
+    fetch(`https://hero-park.herokuapp.com/parking/${park_id}/checkout/${trans_id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -213,7 +213,7 @@ class App extends React.Component {
   }
   addMoreParkingLot = (token, building_id , price, name, nums) => {
     alert('Success add...')
-    fetch('https://127.0.0.1:5000/addparking', {
+    fetch('https://hero-park.herokuapp.com/addparking', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -225,7 +225,7 @@ class App extends React.Component {
       .then(this.setState({}, this.getUserinfor(token)))
   }
   deleteParkingLot = (token, parking_id) => {
-    fetch('https://127.0.0.1:5000/deleteparking', {
+    fetch('https://hero-park.herokuapp.com/deleteparking', {
       method: 'POST',
       headers: {
         'Accept': 'application/json, text/plain, */*',
