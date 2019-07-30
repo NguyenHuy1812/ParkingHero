@@ -34,7 +34,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
         'Authorization': `Token ${token}`
       },
     }).then(results => results.json())
-      .then(data => setBuilding(JSON.parse(data.data[0])))
+      .then(data => setBuilding(data.data))
       .catch(function (error) { console.log(error) }
       )      
   }, [token, data , search ==='All' ])
@@ -47,7 +47,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
         'Authorization': `Token ${token}`
       },
     }).then(results => results.json())
-      .then(data => setOriginal(JSON.parse(data.data[0])))
+      .then(data => setOriginal(data.data))
       .catch(function (error) { console.log(error) }
       )
   }, [token, data , search ==='All' ])

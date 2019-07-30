@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      newdata:'',
+      transaction:'',
       building: '',
       data: '',
       token: '',
@@ -145,12 +145,13 @@ class App extends React.Component {
       },
     }).then(results => results.json())
       .then(data => this.setState({
-        data: JSON.parse(data.data[0]),
+        transaction: data.transaction,
+        data: data.data,
         user: {
-          username: JSON.parse(data.data[0]).name,
-          email: JSON.parse(data.data[0]).email,
-          password: JSON.parse(data.data[0]).password,
-          profile: JSON.parse(data.data[0]).profiles
+          username: data.data.name,
+          email:data.data.email,
+          password: data.data.password,
+          profile: data.data.profiles
         }
       }))
       .catch(function (error) { console.log(error) });
@@ -238,6 +239,7 @@ class App extends React.Component {
   }
   
   render() {
+    console.log("$$$$######## from APP", this.state)
     return (
      <Router basename= "">
         <div>

@@ -2,8 +2,7 @@ import React, { useEffect , useState } from "react";
 import { Link } from 'react-router-dom'
 
 import {
-  FormInput, Container, Button, Row, Col, Card, CardHeader,CardBody,CardFooter,
-  FormGroup,InputGroup,InputGroupAddon,InputGroupText,
+  Container, Button, Row, Col, Card, CardHeader,CardBody,CardFooter,
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
@@ -12,7 +11,7 @@ import Moment from 'react-moment';
 var moment = require('moment');
 
 
-const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot, getDumpinfor  }) => {
+const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot, transaction  }) => {
   const [page,setPage] = useState({
     page1: '',
     page2: 'none',
@@ -62,9 +61,9 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                   </h5>
                   
                   <h5 className="card-title">
-                    {park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
+                    {transaction && transaction[0] && transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
                       <a className="text-fiord-blue" >
-                      Checkin: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                      Checkin: {moment(transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
                       </a>
                       :
                       <a className="text-fiord-blue" >
