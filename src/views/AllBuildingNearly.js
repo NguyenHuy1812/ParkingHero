@@ -20,7 +20,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
   const [building, setBuilding] = useState('')
   const [original, setOriginal] = useState('')
   const locale = [
-    'District 1' , 'District 2' ,'District 3','District 3','District 4','District 5', 
+    'District 1' , 'District 2' ,'District 3','District 4','District 5', 
     'District 6' , 'District 7', 'District 8' , 'District 9', 'District 10', 'District 11',
     'District 12', 'District GoVap', 'District PhuNhuan', 'District HocMon','District BinhChanh'
   ]
@@ -93,7 +93,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
                   <Col sm= '5'>
                   <h5 className="card-title text-fiord-blue">
                  
-                    Location: {name.street_location} {name.location}
+                    Location: {name.street_location} -  {name.location}
                  
                 </h5>
                   </Col>
