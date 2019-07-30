@@ -84,13 +84,13 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 <Button onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
                   CheckOut {park.transaction[0].id}
                 </Button>
-                <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target={"#exampleModalLong"+ park.transaction[0].id}>
                         Open ticket Parking
                 </Button>
               </span>
               {/*modallllllll ##########################Modal */}
 
-              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal fade" id={"exampleModalLong"+ park.transaction[0].id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <Card>
                           <div class="modal-dialog" role="document" >
                            
