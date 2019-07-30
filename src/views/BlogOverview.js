@@ -22,8 +22,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
   // const [value, setValue] = useState(0)
   // setTimeout(()=> setValue(value+ 1), 3000)
   useEffect(() => { getUserinfor(token) }, [token])
-  useEffect(() => { getDumpinfor(token) }, [token])
-
+  
   return (
 
     <  Container fluid className="main-content-container px-4 pb-4">

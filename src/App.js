@@ -145,33 +145,18 @@ class App extends React.Component {
       },
     }).then(results => results.json())
       .then(data => this.setState({
-        data: data.data,
+        data: JSON.parse(data.data[0]),
         user: {
-          username: data.data.name,
-          email: data.data.email,
-          password: data.data.password,
-          profile: data.data.profiles
+          username: JSON.parse(data.data[0]).name,
+          email: JSON.parse(data.data[0]).email,
+          password: JSON.parse(data.data[0]).password,
+          profile: JSON.parse(data.data[0]).profiles
         }
       }))
       .catch(function (error) { console.log(error) });
       
   }
-  getDumpinfor = (token) => {
-    fetch('https://hero-park.herokuapp.com/get/data ', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${token}`
-      },
-    }).then(results => results.json())
-      .then(data => this.setState({
-        ...this.state,
-        newdata : data.dataaa
-      }))
-      .catch(function (error) { console.log(error) });
-      
-  }
+  
   logoutUser = (token) => {
     fetch('https://hero-park.herokuapp.com/logout', {
       method: 'POST',
