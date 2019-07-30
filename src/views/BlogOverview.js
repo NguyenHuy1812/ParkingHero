@@ -289,7 +289,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 <CardFooter className="text-muted border-top py-3">
                   <span className="d-inline-block">
 
-                    <Button href={'http://localhost:3000/parking-slot/' + name.id} outline size="sm" theme="secondary" className="mb-2 mr-1">
+                    <Button href={'https://hero-park.netlify.com/demo/shards-dashboard-lite-react/parking-slot/' + name.id} outline size="sm" theme="secondary" className="mb-2 mr-1">
                       See list of parking for this
                </Button>
 
