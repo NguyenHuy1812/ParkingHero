@@ -22,6 +22,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [name, setName] = useState('')
   const [original, setOriginal] = useState('')
   const [search, setSearch] = useState('')
+  const [modal, setModal] = useState('hide')
   const locale = [
     'District 1', 'District 2', 'District 3', 'District 4', 'District 5',
     'District 6', 'District 7', 'District 8', 'District 9', 'District 10', 'District 11',
@@ -262,12 +263,11 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       }
 
 
-                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target={park.id}>
+                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong1">
                         Edit Parking {park.id}
                      </Button>
-                   
 {/* modal>?????????????????????????????????? */}
-     <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id={park.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+     <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <Card>
                           <div class="modal-dialog" role="document">
                             <Button type="button" class="Close" data-dismiss="modal" aria-label="Close">
@@ -302,7 +302,8 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         </Card>
                       }
                       </div>
-{/* // // // ################################### */}
+{/* // // // ################################### */}                   
+
                  
 
                      
