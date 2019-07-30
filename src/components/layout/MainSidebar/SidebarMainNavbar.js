@@ -35,12 +35,12 @@ class SidebarMainNavbar extends React.Component {
                 id="main-logo"
                 className="d-inline-block align-top mr-1"
                 style={{ maxWidth: "25px" }}
-                src={require("../../../images/shards-dashboards-logo.svg")}
+                src={require("/../../../images/shards-dashboards-logo.svg")}
                 alt="Shards Dashboard"
               />
               {!hideLogoText && (
                 <span className="d-none d-md-inline ml-1">
-                  Hero Park Dashboard!
+                  Hero Park Dashboard!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 </span>
               )}
             </div>
