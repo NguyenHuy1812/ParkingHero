@@ -355,14 +355,15 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         {/* Location */}
                         <Col md="6" className="form-group">
                           <label htmlFor="feFirstName">Building Location</label>
-                          <FormInput placeholder="Location" onChange={(evt) => { setBuilding({ ...building, location: evt.target.value }) }} />
+                          <FormInput placeholder="Street" onChange={(evt) => { setBuilding({ ...building, totalparkingslot: evt.target.value }) }} />
+
                         </Col>
                         {/* Total Slot */}
                         <Col md="6" className="form-group">
-                          <label htmlFor="feLastName">Total slot</label>
+                          <label htmlFor="feLastName">District</label>
                           <FormSelect
-                            placeholder="Total Slot"
-                            onChange={(evt) => { setBuilding({ ...building, totalparkingslot: evt.target.value }) }}
+                            placeholder="District"
+                            onChange={(evt) => { setBuilding({ ...building, location: evt.target.value }) }}
                           >
                             {locale.map((locale, idx) =>
                               <option > {locale}</option>
