@@ -21,7 +21,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [price, setPrice] = useState(0)
   const [name, setName] = useState('')
   const [original, setOriginal] = useState('')
-  const [search, setSearch] = useState( '')
+  const [search, setSearch] = useState('')
   const locale = [
     'District 1', 'District 2', 'District 3', 'District 4', 'District 5',
     'District 6', 'District 7', 'District 8', 'District 9', 'District 10', 'District 11',
@@ -79,7 +79,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
         'Authorization': `Token ${token}`
       },
     }).then(results => results.json())
-      .then(data =>  setOriginal(data.data) )
+      .then(data => setOriginal(data.data))
       .catch(function (error) { console.log(error) })
   }, [token, data])
   const addBuilding = (token, buildingname, buildingcontact, location, description, street) => {
@@ -102,9 +102,9 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       .then(res => alert(res))
     alert('Success add building...')
   }
-   useEffect(()=>{
-    original   &&  setParking({...parking,parkings : original.parkings.filter(park => park.status === search)})
-  },[search])
+  useEffect(() => {
+    original && setParking({ ...parking, parkings: original.parkings.filter(park => park.status === search) })
+  }, [search])
   if (isLoading) {
     return (
       <Container fluid className="main-content-container px-4">
@@ -117,8 +117,6 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
     // Having building handle  =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     parking && parking.parkings ?
       <Container fluid className="main-content-container px-4">
-        {/* Page Header */}
-        {/* adding new parking in here############################################# */}
         <Row noGutters className="page-header py-4">
           <PageTitle sm="4" title="Add New Parking" subtitle="add-new-parking" className="text-sm-left" />
         </Row>
@@ -159,16 +157,16 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
         }
         <Row >
           <div noGutters className="page-header py-4 text-sm-left">
-        <Button onClick ={()=>setParking(original)} type="button" outline size="sm" theme="primary" className="mb-2 mr-1">
-                        All
+            <Button onClick={() => setParking(original)} type="button" outline size="sm" theme="primary" className="mb-2 mr-1">
+              All
         </Button>
-        <Button onClick ={()=>setSearch('Available')} type="button" outline size="sm" theme="success" className="mb-2 mr-1">
-                        Available
+            <Button onClick={() => setSearch('Available')} type="button" outline size="sm" theme="success" className="mb-2 mr-1">
+              Available
         </Button>
-        <Button onClick ={()=>setSearch('Booked')} type="button" outline size="sm" theme="danger" className="mb-2 mr-1">
-                        Booked!
+            <Button onClick={() => setSearch('Booked')} type="button" outline size="sm" theme="danger" className="mb-2 mr-1">
+              Booked!
         </Button>
-        </div>
+          </div>
         </Row>
         {parking &&
           <Row>
@@ -224,9 +222,9 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         <Button onClick={() => { checkOut(token, park.id, park.transaction[0].id) }} outline size="sm" theme="primary" className="mb-2 mr-1">
                           CheckOut {park.transaction[0].id}
                         </Button>
-                      
+
                       </span>
-                     
+
 
                       <Button onClick={() => { deleteParkingLot(token, park.id) }} outline size="sm" theme="danger" className="mb-2 mr-1">
                         Delete!!!!
@@ -236,7 +234,6 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                     //If current user not the same( can )
                     <CardFooter className="text-muted border-top py-3">
                       {user.username && park.owneruser && park.owneruser.name == user.username &&
-
                         <span className="d-inline-block">
 
                           <Button onClick={() => { bookLot(token, park.id) }} outline size="sm" theme="danger" className="mb-2 mr-1">
@@ -261,13 +258,14 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       {user.username && park.owneruser && user.username != park.owneruser &&
                         <Button onClick={() => { bookLot(token, park.id) }} outline size="sm" theme="danger" className="mb-2 mr-1">
                           Cancel this booking ( by Admin)!!!
-                      </Button>}
+                      </Button>
+                      }
 
 
-                      <Button  type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
-                        Edit Parking
+                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                        Edit Parking {park.id}
                      </Button>
-                             {/* ##########################Modal */}
+                   
 
                       <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         {/* ticket infor modal */}
@@ -306,10 +304,10 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       }
                       </div>
 
-                      {/* ################################# */}
-
-
                      
+
+
+
 
                     </CardFooter>
                   }
@@ -365,7 +363,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                               <option > {locale}</option>
                             )}
                           </FormSelect>
-                          
+
                         </Col>
                       </Row>
                       <Row form>
