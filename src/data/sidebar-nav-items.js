@@ -1,3 +1,5 @@
+const id = window.location.pathname.split("/").slice(-1)[0]
+
 export default function() {
   return [
     {
@@ -22,11 +24,11 @@ export default function() {
       htmlBefore: '<i class="material-icons">view_module</i>',
       to: "/add-new-parking",
     },
-    // {
-    //   title: "Manage your building",
-    //   htmlBefore: '<i class="material-icons">view_module</i>',
-    //   to: `/manage/building`,
-    // },
+    {
+      title: "Building now seeing",
+      htmlBefore: '<i class="material-icons">view_module</i>',
+      to: `/parking-slot/${id}`,
+    },
     {
       title: "History order",
       htmlBefore: '<i class="material-icons">table_chart</i>',

@@ -18,7 +18,7 @@ import SignIn from "./views/SignIn"
 import AllBuildingNearly from "./views/AllBuildingNearly"
 import ManageBuilding from "./views/ManageBuilding"
 
-const id = window.location.pathname.split("/").slice(-1)[0].split("-")[2]
+const id = window.location.pathname.split("/").slice(-1)[0]
 export default [
  
   {
