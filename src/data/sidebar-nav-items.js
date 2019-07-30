@@ -22,11 +22,11 @@ export default function() {
       htmlBefore: '<i class="material-icons">view_module</i>',
       to: "/add-new-parking",
     },
-    {
-      title: "Manage your building",
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: `/manage/building`,
-    },
+    // {
+    //   title: "Manage your building",
+    //   htmlBefore: '<i class="material-icons">view_module</i>',
+    //   to: `/manage/building`,
+    // },
     {
       title: "History order",
       htmlBefore: '<i class="material-icons">table_chart</i>',
@@ -37,10 +37,10 @@ export default function() {
       htmlBefore: '<i class="material-icons">person</i>',
       to: "/user-profile-lite",
     },
-    // {
-    //   title: "Errors",
-    //   htmlBefore: '<i class="material-icons">error</i>',
-    //   to: "/errors",
-    // }
+    {
+      title: "Errors",
+      htmlBefore: '<i class="material-icons">error</i>',
+      to: "/errors",
+    }
   ];
 }
