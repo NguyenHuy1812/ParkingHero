@@ -57,7 +57,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
 
       })
     }).then(results => results.json())
-      .then(results => {alert(results),getUserinfor(token)})
+      .then(results => getUserinfor(token))
   }
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/manage/building`, {
