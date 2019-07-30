@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Navbar, NavbarBrand } from "shards-react";
 
 import { Dispatcher, Constants } from "../../../flux";
-import { url } from "inspector";
 
 class SidebarMainNavbar extends React.Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class SidebarMainNavbar extends React.Component {
                 id="main-logo"
                 className="d-inline-block align-top mr-1"
                 style={{ maxWidth: "25px" }}
-                src={url("../../../images/shards-dashboards-logo.svg")}
+                src={require("../../../images/logo-parking.jpeg")}
                 alt="Shards Dashboard"
               />
               {!hideLogoText && (
