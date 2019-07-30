@@ -132,8 +132,8 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
                 <CardFooter className="text-muted border-top py-3">
                   <span className="d-inline-block">
 
-                    <Button href={'http://heroku-park.netlify.com/parking-slot/' + name.id} outline size="sm" theme="secondary" className="mb-2 mr-1">
-                      See list of parking for this
+                    <Button  outline size="sm" theme="secondary" className="mb-2 mr-1">
+                    <Link to={"/parking-slot/" + name.id}> list of parking for this</Link>
                </Button>
 
                   </span>
