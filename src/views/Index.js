@@ -70,16 +70,17 @@ const Index = ({handleSubmit, handleChange, user }) => {
               </div>
             </header>
             
-            <section className="page-section bg-primary" id="about">
-              <div className="container" style ={{
-    backgroundImage:'url("../img/hero.jpg")',
-    // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'scroll',
-    backgroundZize: 'cover',
-    width: '100%'
-  }}>
+            <section className="page-section bg-primary" id="about"
+            style ={{
+              backgroundImage:'url("../img/img7.jpg")',
+              // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'scroll',
+              backgroundZize: 'cover',
+              width: '100%'
+            }}>
+              <div className="container" >
                 <div className="row justify-content-center">
                   <div className="col-lg-8 text-center">
                     <h2 className="text-white mt-0">We've got what you need!</h2>
@@ -158,20 +159,20 @@ const Index = ({handleSubmit, handleChange, user }) => {
                     
                   </div>
                   <div className="col-lg-4 col-sm-6">
-                      <img className="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="" />
+                      <img className="img-fluid" src="img/img4.jpg" alt="" />
                       <div className="portfolio-box-caption">
                         
                       </div>
                   </div>
                   <div className="col-lg-4 col-sm-6">
-                      <img className="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="" />
+                      <img className="img-fluid" src="img/img5.jpg" alt="" />
                       <div className="portfolio-box-caption">
                        
                       </div>
                     
                   </div>
                   <div className="col-lg-4 col-sm-6">
-                      <img className="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="" />
+                      <img className="img-fluid" src="img/img6.jpg" alt="" />
                       <div className="portfolio-box-caption p-3">
                         
                       </div>
