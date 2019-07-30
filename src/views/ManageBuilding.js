@@ -244,13 +244,18 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                               <Col>
                               <img
                               src={park.transaction[0].ticket_qrcode}
-                          
                               width="200"
                   />
                               </Col>
                               <Col>
+                              <h5>
+                                Book by:  {park.owneruser.name}
+                              </h5>
+                              <h5>
                               Time check-in: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                              </h5>
                               </Col>
+                            
                                 </Row>
                               </CardBody>
                               <div class="modal-footer">
