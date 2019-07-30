@@ -42,7 +42,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getUserinfor(token)
-  }, [token]);
+  }, [token, parking]);
   const editParking = (token, idx, name, price) => {
     fetch(`https://hero-park.herokuapp.com/parking/edit/${idx}`, {
       method: 'POST',
@@ -57,7 +57,6 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       })
     }).then(results => results.json())
       .then(results => alert(results))
-    window.location.replace(`https://hero-park.netlify.com/manage/building  `)
   }
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/manage/building`, {
