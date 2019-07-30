@@ -1,4 +1,6 @@
 import React, { useEffect , useState } from "react";
+import { Link } from 'react-router-dom'
+
 import {
   FormInput, Container, Button, Row, Col, Card, CardHeader,CardBody,CardFooter,
   FormGroup,InputGroup,InputGroupAddon,InputGroupText,
@@ -289,8 +291,8 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 <CardFooter className="text-muted border-top py-3">
                   <span className="d-inline-block">
 
-                    <Button href={'https://hero-park.netlify.com/parking-slot/' + name.id} outline size="sm" theme="secondary" className="mb-2 mr-1">
-                      See list of parking for this
+                    <Button  outline size="sm" theme="secondary" className="mb-2 mr-1">
+                    <Link to="{'https://hero-park.netlify.com/parking-slot/' + name.id}"> list of parking for this</Link>
                </Button>
 
                   </span>
