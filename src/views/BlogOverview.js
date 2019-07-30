@@ -61,9 +61,9 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                   </h5>
                   
                   <h5 className="card-title">
-                    {transaction && transaction[0] && transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
+                    {park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
                       <a className="text-fiord-blue" >
-                      Checkin: {moment(transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                      Checkin: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
                       </a>
                       :
                       <a className="text-fiord-blue" >
@@ -212,7 +212,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 </tr>
               </thead>
               <tbody>
-             { data && data.transactions &&  data.transactions.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
+             { transactions &&  transactions.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
                 <tr>
                     <td> {idx + 1 } </td>
                     <td>{trans.id}</td>
