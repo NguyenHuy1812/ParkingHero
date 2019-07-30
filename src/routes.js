@@ -62,8 +62,7 @@ export default [
     component: Tables
   },
   {
-    path: "/parking-slot/",
-    exact = false,
+    path: "/parking-slot",
     layout: DefaultLayout,
     component: BlogPosts
   },
