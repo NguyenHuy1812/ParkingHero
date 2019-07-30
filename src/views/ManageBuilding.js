@@ -24,7 +24,6 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [name, setName] = useState('')
   const [original, setOriginal] = useState('')
   const [search, setSearch] = useState( '')
-  const [modal, setModal] = useState('')
   const locale = [
     'District 1', 'District 2', 'District 3', 'District 4', 'District 5',
     'District 6', 'District 7', 'District 8', 'District 9', 'District 10', 'District 11',
@@ -60,7 +59,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       })
     }).then(results => results.json())
       .then(results => alert(results))
-    window.location.replace(`http://localhost:3000/manage/building  `)
+    window.location.replace(`https://hero-park.netlify.com/demo/shards-dashboard-lite-react/manage/building  `)
   }
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/manage/building`, {
@@ -109,7 +108,6 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
    useEffect(()=>{
     original   &&  setParking({...parking,parkings : original.parkings.filter(park => park.status === search)})
   },[search])
-  console.log('##########', modal)
   if (isLoading) {
     return (
       <Container fluid className="main-content-container px-4">
@@ -231,7 +229,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         </Button>
                       
                       </span>
-                      {/*modallllllll ##########################Modal */}
+                     
 
                       <Button onClick={() => { deleteParkingLot(token, park.id) }} outline size="sm" theme="danger" className="mb-2 mr-1">
                         Delete!!!!
@@ -269,7 +267,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       </Button>}
 
 
-                      <Button onClick ={()=>{setModal('edit')}} type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal1" data-target="#exampleModalLong">
+                      <Button  type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal1" data-target="#exampleModalLong">
                         Edit Parking
                      </Button>
 

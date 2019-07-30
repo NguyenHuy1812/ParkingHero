@@ -250,9 +250,10 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                  
                 </h5>
                 <h5 className="card-title text-fiord-blue">    
-                    Location:{name.totalparkingslot} - {name.location}
+                    Location:{name.street_location} - {name.location}
                 </h5>
-                {/* <h5><h5>Your building income: {total[0][1]} $</h5></h5> */}
+                {/* <h5><h5>Your building in
+                come: {total[0][1]} $</h5></h5> */}
                 <CardBody >
                   <Row>
                     <Col sm='1'>
