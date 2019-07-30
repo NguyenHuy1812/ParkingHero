@@ -57,7 +57,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
 
       })
     }).then(results => results.json())
-      .then(results => alert(results))
+      .then(results => {alert(results),getUserinfor(token)})
   }
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/manage/building`, {
@@ -313,7 +313,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
 
 
                       <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target={"#exampleModalLong" + park.id}>
-                        Edit Parking {park.id}
+                        Edit Parking
                      </Button>
 {/* modal>?????????????????????????????????? */}
      <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id={"exampleModalLong" + park.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -324,7 +324,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                             </Button>
                             <div class="modal-content">
                               <CardHeader class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">No{idx + 1}. {park.name} {park.id}</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">No{idx + 1}. {park.name} </h5>
                               </CardHeader>
                               <CardBody class="modal-body">
                                 <FormGroup>
