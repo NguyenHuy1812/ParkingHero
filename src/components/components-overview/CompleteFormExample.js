@@ -134,7 +134,6 @@ CompleteForm = () => (
   </ListGroup>
 )
   render () {
-    console.log('this.state when render', this.state)
     return (
      
       this.CompleteForm()

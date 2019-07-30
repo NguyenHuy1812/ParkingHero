@@ -6,7 +6,6 @@ var moment = require('moment');
 
 
 const Tables = ({ data, user, token, getUserinfor }) => {
-  console.log('##### table tab', user, data)
   const [page,setPage] = useState({
                           page1: '',
                           page2: 'none',
@@ -15,7 +14,6 @@ const Tables = ({ data, user, token, getUserinfor }) => {
   useEffect(() => {
     getUserinfor(token)
   }, [token])
-  console.log("######################", page)
   return (
     <Container fluid className="main-content-container px-4">
       {/* Page Header */}

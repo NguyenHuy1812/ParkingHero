@@ -99,7 +99,6 @@ class App extends React.Component {
     })
     event.preventDefault();
     this.registerUser(this.state.user.susername, this.state.user.spassword, this.state.user.sconfirm, this.state.user.semail, this.state.user.saddress)
-    console.log('ewofjweofijwoeifj', this.state)
   }
   registerUser = (susername, spassword, sconfirm, semail, address) => {
    
@@ -236,7 +235,6 @@ class App extends React.Component {
       .then(this.setState({}, this.getUserinfor(token)))
   }
   render() {
-    console.log('data', this.state.data)
     return (
      <Router basename= "">
         <div>

@@ -44,7 +44,6 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
     setUserinfor(user)
   }, [user])
   const updateUser = (token, firstname, lastname, email, phone, address, avatar) => {
-    console.log('hello')
     fetch('https://hero-park.herokuapp.com/user/data', {
       method: 'POST',
       headers: {
@@ -58,7 +57,6 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
         if (res === 'success!'){
         alert('Updated!!!!')}else{
          setError(res)
-         console.log('reroeroeroeoreoreoroer',res.firstname[0] )
         }
     })
   }
@@ -93,7 +91,6 @@ const UserProfileLite = ({ user, data, getUserinfor, token }) => {
       .then(data => setBuilding(data.data))
       .catch(function (error) { console.log(error) })
   }, [token, data])
-  console.log('res cylelce', error)
   return (
     // User Profile ####################################
     <Container fluid className="main-content-container px-4">
