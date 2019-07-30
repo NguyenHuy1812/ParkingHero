@@ -24,7 +24,7 @@ const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut 
   
   useEffect(() => {
     getUserinfor(token)
-  }, [token, id]);
+  }, []);
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/data/building/${id}`, {
       method: 'GET',
