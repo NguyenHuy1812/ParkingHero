@@ -13,7 +13,7 @@ export default function() {
     },
     {
       title: "Manage your building",
-      htmlBefore: '<i class="material-icons">note_add</i>',
+      htmlBefore: '<i class="material-icons">error</i>',
       to: `/manage/building`,
     },
     
@@ -22,11 +22,11 @@ export default function() {
       htmlBefore: '<i class="material-icons">view_module</i>',
       to: "/add-new-parking",
     },
-    // {
-    //   title: "Forms & Components",
-    //   htmlBefore: '<i class="material-icons">view_module</i>',
-    //   to: "/components-overview",
-    // },
+    {
+      title: "Manage your building",
+      htmlBefore: '<i class="material-icons">view_module</i>',
+      to: `/manage/building`,
+    },
     {
       title: "History order",
       htmlBefore: '<i class="material-icons">table_chart</i>',
