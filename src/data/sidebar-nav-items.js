@@ -25,6 +25,11 @@ export default function() {
       to: "/add-new-parking",
     },
     {
+      title: "Building now seeing",
+      htmlBefore: '<i class="material-icons">view_module</i>',
+      to: `/parking-slot/${id}`,
+    },
+    {
       title: "History order",
       htmlBefore: '<i class="material-icons">table_chart</i>',
       to: "/tables",
