@@ -18,7 +18,6 @@ import SignIn from "./views/SignIn"
 import AllBuildingNearly from "./views/AllBuildingNearly"
 import ManageBuilding from "./views/ManageBuilding"
 
-const id = window.location.pathname.split("/").slice(-1)[0]
 export default [
  
   {
@@ -64,11 +63,6 @@ export default [
   },
   {
     path: `/parking-slot`,  
-    layout: DefaultLayout,
-    component: BlogPosts
-  },
-  {
-    path: `/parking-slot/${id}`,  
     layout: DefaultLayout,
     component: BlogPosts
   },
