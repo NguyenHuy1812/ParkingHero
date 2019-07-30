@@ -14,7 +14,7 @@ export default function() {
     {
       title: "Manage your building",
       htmlBefore: '<i class="material-icons">error</i>',
-      to: `/manage/building`,
+      to: `/manage-building`,
     },
     
     {

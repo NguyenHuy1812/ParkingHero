@@ -72,7 +72,7 @@ export default [
     component: SignIn
   },
   {
-    path: "/manage/building",
+    path: "/manage-building",
     layout:  DefaultLayout,
     component: ManageBuilding
   }
