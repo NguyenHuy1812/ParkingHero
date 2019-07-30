@@ -71,7 +71,15 @@ const Index = ({handleSubmit, handleChange, user }) => {
             </header>
             
             <section className="page-section bg-primary" id="about">
-              <div className="container">
+              <div className="container" style ={{
+    backgroundImage:'url("../img/hero.jpg")',
+    // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'scroll',
+    backgroundZize: 'cover',
+    width: '100%'
+  }}>
                 <div className="row justify-content-center">
                   <div className="col-lg-8 text-center">
                     <h2 className="text-white mt-0">We've got what you need!</h2>
