@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      newdata:'',
       building: '',
       data: '',
       token: '',
@@ -155,6 +156,22 @@ class App extends React.Component {
       .catch(function (error) { console.log(error) });
       
   }
+  getDumpinfor = (token) => {
+    fetch('https://hero-park.herokuapp.com/get/data ', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      },
+    }).then(results => results.json())
+      .then(data => this.setState({
+        ...this.state,
+        newdata : data
+      }))
+      .catch(function (error) { console.log(error) });
+      
+  }
   logoutUser = (token) => {
     fetch('https://hero-park.herokuapp.com/logout', {
       method: 'POST',
@@ -234,7 +251,9 @@ class App extends React.Component {
     }).then(res => res.json())
       .then(this.setState({}, this.getUserinfor(token)))
   }
+  
   render() {
+    console.log("#############", this.state.newdata)
     return (
      <Router basename= "">
         <div>
@@ -264,6 +283,7 @@ class App extends React.Component {
                       getParkinginfor={this.getParkinginfor}
                       checkIn = {this.checkIn}
                       checkOut = {this.checkOut}
+                      getDumpinfor = {this.getDumpinfor}
                     />
                   
                   </route.layout>
