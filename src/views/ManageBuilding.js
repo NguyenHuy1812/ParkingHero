@@ -262,13 +262,12 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       }
 
 
-                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target={park.id}>
                         Edit Parking {park.id}
                      </Button>
                    
-
-                      <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                        {/* ticket infor modal */}
+{/* modal>?????????????????????????????????? */}
+     <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id={park.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <Card>
                           <div class="modal-dialog" role="document">
                             <Button type="button" class="Close" data-dismiss="modal" aria-label="Close">
@@ -303,6 +302,8 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         </Card>
                       }
                       </div>
+{/* // // // ################################### */}
+                 
 
                      
 
