@@ -37,59 +37,50 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
 
 <br />
 
-> ✨ **Note:** You can download the Sketch files from the official product page.
 
 <br />
 
-### Quick Start
 
-* Install dependencies by running `yarn` or `npm install`.
-* Run `yarn start` or `npm run start` to start the local development server.
-* 😎 **That's it!** You're ready to start building awesome dashboards.
+### Project Main Structure
 
+- **Landing- Page**: Basic information of the project ( includes : contact, imgs, introduce...)
+- **Sign in - Sign up**: Handle Sign-in and sign-up account!
+- **Hero Park Dashboard**:After sign in success, user can access to the dashboard, where user can:
+### With normal user
+- Finding nearly building with user location, with directly information that which building avalable parking lot or not.
+- Booking the available parking lot with correct information about price, location of the parking lot to keep the lot.
+- After booking, user allow 15 minutes to keep the booking, and not be charge any fee for this booking , user allow to reverse all booking that they already booked on this time without money charge.
+- After 15 minutes, if user decide to click "check-in" , they will have a transaction and ticket to check-in with the building parking lot, and they will be charge at this time.
+- User can see the current booking lot and the time they check-in.
+- After finish using the parking lot, user can click to the button "Check-out" to finish the booking, transcation will give back the price that user must pay, and the parking lot will return to "Available" for other users.
+    <br />
+
+
+
+       <p align="center">
+<a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
+<img src="assets/demo-preview.gif" width="650" />
+</a>
+</p>
 <br />
 
-### Project Structure
+### With Buidling owner
+- Can create the building for other user can see and book the "Available" lots.
+- Can easy to create | edit | delete the parking lot information.
+- Can see the transaction of their building.
+    <br />
 
-- This project is bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
-- **Flux** is used for state management and all Flux specific files are located inside `src/flux`. Transitioning to a more robust solution such as Redux is also fairly simple.
-- All primary templates are located inside `src/views`.
-- There is only one single layout defined (Default) inside `src/layouts`, however, the current structure provides an easy way of extending the UI kit. 
-- The `src/components` directory hosts all template-specific subcomponents in their own subdirectory.
-- The layout styles inherited from Shards Dashboard are pulled in from the `src/shards-dashboard` submodule inside `src/App.js`.
-- Other extra styles specific to the libraries used are located inside `src/assets`.
-- The `src/utils` directory contains generic Chart.js utilities.
 
-<br />
+       <p align="center">
+<a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
+<img src="assets/demo-preview.gif" width="650" />
+</a>
+</p>
+
 
 ### Available Scripts
 
-### `npm start`
 
-Runs the app in the development mode.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-
-<br />
-
-### 🌟 Pro Version
-
-If you're looking for something more, check out [Shards Dashboard Pro React](https://designrevision.com/downloads/shards-dashboard-pro-react/) which features many more custom templates and components. Use the `GITHUB15` coupon code for a **15% discount off the current price**.
-
-<br />
 
 ### Built using
 
