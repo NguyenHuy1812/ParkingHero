@@ -59,7 +59,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       })
     }).then(results => results.json())
       .then(results => alert(results))
-    window.location.replace(`https://hero-park.netlify.com/demo/shards-dashboard-lite-react/manage/building  `)
+    window.location.replace(`https://hero-park.netlify.com/manage/building  `)
   }
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/manage/building`, {

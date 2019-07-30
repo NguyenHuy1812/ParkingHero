@@ -63,6 +63,7 @@ export default [
   },
   {
     path: "/parking-slot",
+    exact = false,
     layout: DefaultLayout,
     component: BlogPosts
   },
