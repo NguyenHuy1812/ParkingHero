@@ -263,11 +263,11 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       }
 
 
-                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong1">
+                      <Button type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target={"#exampleModalLong" + park.id}>
                         Edit Parking {park.id}
                      </Button>
 {/* modal>?????????????????????????????????? */}
-     <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+     <div stlye={{ backgroundColor: '#f5f6f8' }} class="modal fade" id={"exampleModalLong" + park.id} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <Card>
                           <div class="modal-dialog" role="document">
                             <Button type="button" class="Close" data-dismiss="modal" aria-label="Close">
