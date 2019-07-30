@@ -212,7 +212,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 </tr>
               </thead>
               <tbody>
-             { transactions &&  transactions.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
+             { transaction &&  transaction.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
                 <tr>
                     <td> {idx + 1 } </td>
                     <td>{trans.id}</td>
