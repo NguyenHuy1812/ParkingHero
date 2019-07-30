@@ -93,7 +93,7 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
                   <Col sm= '5'>
                   <h5 className="card-title text-fiord-blue">
                  
-                    Location: {name.location}
+                    Location: {name.street_location} {name.location}
                  
                 </h5>
                   </Col>
