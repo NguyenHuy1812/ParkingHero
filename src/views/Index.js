@@ -85,7 +85,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
                   <div className="col-lg-8 text-center">
                     <h2 className="text-white mt-0">We've got what you need!</h2>
                     <hr className="divider light my-4" />
-                    <p className="text-white-50 mb-4">Hero Park have fully solution for every problems with parking lots that you met!!!</p>
+                    <p className="text-white mb-4">Hero Park have fully solution for every problems with parking lots that you met!!!</p>
                     <a className="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
                   </div>
                 </div>
