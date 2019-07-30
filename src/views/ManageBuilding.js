@@ -267,7 +267,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                       </Button>}
 
 
-                      <Button  type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal1" data-target="#exampleModalLong">
+                      <Button  type="button" outline size="sm" theme="secondary" className="mb-2 mr-1" data-toggle="modal" data-target="#exampleModalLong">
                         Edit Parking
                      </Button>
 
@@ -304,7 +304,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                               </CardBody>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-primany" data-dismiss="modal">Close</button>
-                                <button type="button" data-dismiss="modal1" onClick={() => editParking(token, park.id, parkingedit.name, parkingedit.price)} class="btn btn-primary">Save changes</button>
+                                <button type="button" data-dismiss="modal" onClick={() => editParking(token, park.id, parkingedit.name, parkingedit.price)} class="btn btn-primary">Save changes</button>
                               </div>
                             </div>
                           </div>
