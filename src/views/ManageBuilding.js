@@ -14,7 +14,7 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
-import { modalview } from "react-ga";
+
 var moment = require('moment');
 
 
