@@ -42,7 +42,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getUserinfor(token)
-  }, [token, parking]);
+  }, [token]);
   const editParking = (token, idx, name, price) => {
     fetch(`https://hero-park.herokuapp.com/parking/edit/${idx}`, {
       method: 'POST',
