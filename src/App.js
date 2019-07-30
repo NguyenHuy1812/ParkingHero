@@ -167,7 +167,7 @@ class App extends React.Component {
     }).then(results => results.json())
       .then(data => this.setState({
         ...this.state,
-        newdata : JSON.parse(data)
+        newdata : JSON.parse(data[0])
       }))
       .catch(function (error) { console.log(error) });
       
