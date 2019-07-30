@@ -292,7 +292,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                   <span className="d-inline-block">
 
                     <Button  outline size="sm" theme="secondary" className="mb-2 mr-1">
-                    <Link onClick = {()=>getUserinfor(token)} to={`/parking-slot-${name.id}`}> list of parking for this</Link>
+                    <Link to={`/parking-slot/${name.id}`}> list of parking for this</Link>
                </Button>
 
                   </span>

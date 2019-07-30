@@ -20,10 +20,10 @@ const BlogPosts = ({ bookLot,data, user, token, getUserinfor, checkIn, checkOut 
   const [parking, setParking] = useState('')
   const [original, setOriginal] = useState('')
   const [search, setSearch] = useState( '')
-  const id = window.location.pathname.split("/").slice(-1)[0].split("-")[2]
+  const id = window.location.pathname.split("/").slice(-1)[0]
   useEffect(() => {
     getUserinfor(token)
-  }, [token, parking]);
+  }, [token]);
   useEffect(() => {
     fetch(`https://hero-park.herokuapp.com/data/building/${id}`, {
       method: 'GET',
