@@ -26,7 +26,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
   const [search, setSearch] = useState( '')
   const [modal, setModal] = useState('')
   const locale = [
-    'District 1', 'District 2', 'District 3', 'District 3', 'District 4', 'District 5',
+    'District 1', 'District 2', 'District 3', 'District 4', 'District 5',
     'District 6', 'District 7', 'District 8', 'District 9', 'District 10', 'District 11',
     'District 12', 'District GoVap', 'District PhuNhuan', 'District HocMon', 'District BinhChanh'
   ]
@@ -35,7 +35,8 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
     buildingcontact: '',
     location: '',
     description: '',
-    totalparkingslot: ''
+    totalparkingslot: '',
+    street: ''
   })
   const [parkingedit, setParkingedit] = useState({
     name: '',
@@ -85,7 +86,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
       .then(data =>  setOriginal(data.data) )
       .catch(function (error) { console.log(error) })
   }, [token, data])
-  const addBuilding = (token, buildingname, buildingcontact, location, description, totalparkingslot) => {
+  const addBuilding = (token, buildingname, buildingcontact, location, description, street) => {
 
     fetch('https://hero-park.herokuapp.com/addbuilding', {
       method: 'POST',
@@ -99,7 +100,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
         "buildingcontact": buildingcontact,
         "location": location,
         "description": description,
-        "totalparkingslot": totalparkingslot
+        "street": street
       })
     }).then(res => res.json())
       .then(res => alert(res))
@@ -355,7 +356,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         {/* Location */}
                         <Col md="6" className="form-group">
                           <label htmlFor="feFirstName">Building Location</label>
-                          <FormInput placeholder="Street" onChange={(evt) => { setBuilding({ ...building, totalparkingslot: evt.target.value }) }} />
+                          <FormInput placeholder="Street" onChange={(evt) => { setBuilding({ ...building, street: evt.target.value }) }} />
 
                         </Col>
                         {/* Total Slot */}
@@ -369,8 +370,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                               <option > {locale}</option>
                             )}
                           </FormSelect>
-                          <FormInput
-                          />
+                          
                         </Col>
                       </Row>
                       <Row form>
@@ -382,7 +382,7 @@ const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot
                         </Col>
                       </Row>
                       <Button outline size="sm" theme="primary" className="mb-2 mr-1"
-                        onClick={() => { addBuilding(token, building.buildingname, building.buildingcontact, building.location, building.description, building.totalparkingslot) }}>
+                        onClick={() => { addBuilding(token, building.buildingname, building.buildingcontact, building.location, building.description, building.street) }}>
                         Add now!
       </Button>
                     </Form>
