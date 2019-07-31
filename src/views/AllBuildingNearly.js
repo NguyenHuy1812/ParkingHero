@@ -55,7 +55,6 @@ const AllBuildingNearly = ({ bookLot, data, token, deleteParkingLot, getUserinfo
     original   &&  setBuilding(original.filter(build => build.location === search))
   },[search])
   useEffect(() => { getUserinfor(token) }, [token])
-console.log("#################", building)
   return (
 
     <Container fluid className="main-content-container px-4">
