@@ -22,7 +22,7 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
   <a href=" https://hero-park.netlify.com/">
     <img height="55px" src="assets/btn-live-preview.png" />
   </a>
-  <a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
+  <a href="https://hero-park.netlify.com/">
     <img height="55px" src="assets/btn-learn-more.png" />
   </a>
 </p>
@@ -30,8 +30,8 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
 <br />
 
 <p align="center">
-<a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
-<img src="assets/demo-preview.gif" width="650" />
+<a href="https://hero-park.netlify.com/">
+<img src="assets/signin.gif" width="650" />
 </a>
 </p>
 
@@ -55,15 +55,6 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
 - After finish using the parking lot, user can click to the button "Check-out" to finish the booking, transcation will give back the price that user must pay, and the parking lot will return to "Available" for other users.
     <br />
 
-
-
-       <p align="center">
-<a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
-<img src="assets/demo-preview.gif" width="650" />
-</a>
-</p>
-<br />
-
 ### With Buidling owner
 - Can create the building for other user can see and book the "Available" lots.
 - Can easy to create | edit | delete the parking lot information.
@@ -71,9 +62,9 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
     <br />
 
 
-       <p align="center">
-<a href="https://designrevision.com/downloads/shards-dashboard-lite-react">
-<img src="assets/demo-preview.gif" width="650" />
+
+<a href="https://hero-park.netlify.com/">
+<img src="assets/book.gif" width="650" />
 </a>
 </p>
 
