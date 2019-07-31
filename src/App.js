@@ -239,7 +239,6 @@ class App extends React.Component {
   }
   
   render() {
-    console.log("$$$$######## from APP", this.state)
     return (
      <Router basename= "">
         <div>
