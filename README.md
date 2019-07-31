@@ -69,21 +69,7 @@ An awesome app, help users to finding - booking - sharing the parking lots toget
 </p>
 
 
-### Available Scripts
 
 
 
-### Built using
 
-- [Shards React](https://github.com/designrevision/shards-react)
-- [Chart.js](https://www.chartjs.org/)
-- [Flux](https://facebook.github.io/flux/)
-- [No UI Slider](https://refreshless.com/nouislider/)
-- [React Datepicker](https://www.npmjs.com/package/react-datepicker)
-- [Quill](https://quilljs.com/)
-
-<br />
-
-### Changelog
-
-Please check out the [CHANGELOG](CHANGELOG.md).
