@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 var moment = require('moment');
 
 
-const Tables = ({ data, user, token, getUserinfor }) => {
+const Tables = ({ data, user, token, getUserinfor ,transaction}) => {
   const [page,setPage] = useState({
                           page1: '',
                           page2: 'none',
@@ -63,7 +63,7 @@ const Tables = ({ data, user, token, getUserinfor }) => {
                 </thead>
                 <tbody className = "pagination-container">
                 
-                  {data && data.transactions && data.transactions.filter(
+                  { transaction && transaction.filter(
                                           tran => tran.status === 'success').slice(0,20).map((trans, idx) =>
                     
                    <tr  data-page = '1' style = {{display: page.page1}}>
@@ -86,7 +86,7 @@ const Tables = ({ data, user, token, getUserinfor }) => {
                     </tr>
            
                   )}
-                  {data && data.transactions && data.transactions.filter(
+                  { transaction && transaction.filter(
                                           tran => tran.status === 'success').slice(20,40).map((trans, idx) =>
                     
                    <tr  data-page = '2' style = {{display: page.page2}}>

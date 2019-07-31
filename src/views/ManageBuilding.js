@@ -16,7 +16,7 @@ import PageTitle from "../components/common/PageTitle";
 var moment = require('moment');
 
 
-const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot, checkIn, addMoreParkingLot, getUserinfor }) => {
+const ManageBuilding = ({ checkOut, bookLot, data, user, token, deleteParkingLot, checkIn, addMoreParkingLot, getUserinfor, transaction }) => {
   const [parking, setParking] = useState('')
   const [price, setPrice] = useState(0)
   const [name, setName] = useState('')

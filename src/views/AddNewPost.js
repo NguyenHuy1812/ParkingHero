@@ -10,7 +10,7 @@ import Countdown from 'react-countdown-now';
 var moment = require('moment');
 
 
-const AddNewPost = ({  getUserinfor, token, data, user, checkOut,checkIn,bookLot  }) => {
+const AddNewPost = ({  getUserinfor, token, data, user, checkOut,checkIn,bookLot , transaction }) => {
   const [price, setPrice] = useState(0)
   // const [value, setValue] = useState(0)
   // setTimeout(()=> setValue(value+ 1), 3000)
@@ -199,7 +199,7 @@ const AddNewPost = ({  getUserinfor, token, data, user, checkOut,checkIn,bookLot
                 </tr>
               </thead>
               <tbody>
-             { data && data.transactions &&  data.transactions.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
+             { transaction &&  transaction.filter(tran=>tran.status === 'Checkin').map((trans, idx)=>
                 <tr>
                     <td> {idx + 1 } </td>
                     <td>{trans.id}</td>
