@@ -20,7 +20,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
   
   // const [value, setValue] = useState(0)
   // setTimeout(()=> setValue(value+ 1), 3000)
-  useEffect(() => { getUserinfor(token) }, [token])
+  useEffect(() => { getUserinfor(token) }, [token,data])
   
   return (
 
