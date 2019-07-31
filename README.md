@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://hero-park.netlify.com/">
-<img src="assets/preview.png" width="250" />
+<img src="assets/preview.png" width="650" />
 </a>
 </p>
 
