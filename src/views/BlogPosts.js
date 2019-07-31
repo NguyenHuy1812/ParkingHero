@@ -51,9 +51,6 @@ const BlogPosts = ({ bookLot, data, user, token, getUserinfor, checkIn, checkOut
   useEffect(() => {
     original && setParking({ ...parking, parkings: original.parkings.filter(park => park.status === search) })
   }, [search])
-
-
-  console.log("##############", data, token)
   return (
 
     <Container fluid className="main-content-container px-4">
