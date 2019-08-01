@@ -115,7 +115,7 @@ class App extends React.Component {
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else return  alert((Object.keys(res)[0]).slice(1) + ': ' +res[Object.keys(res)[0]][0])
+       }        else return  this.setState({...this.state, error :((Object.keys(res)[0]).slice(1) + ': ' +res[Object.keys(res)[0]][0])})
       })
     
   }
