@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import routes from "./routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
-import AlertDialog from "./components/components-overview/Alert"
+import Alert from "./components/components-overview/Alert"
+import AlertDialog from "./components/components-overview/Alert";
 
 
 class App extends React.Component {
@@ -114,9 +115,9 @@ class App extends React.Component {
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else return  <AlertDialog alert = {Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]}></AlertDialog>
+       }        else return  <AlertDialog></AlertDialog>
       })
-    //{Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]} 
+    
   }
   loginUser = (username, password) => {
     fetch('https://hero-park.herokuapp.com/user/signin', {
@@ -132,7 +133,7 @@ class App extends React.Component {
         if (res.status === 'ok') {
           alert('Login!!!!!!!!!!!')
           return window.location.replace(`https://hero-park.netlify.com/sign-in?api_key=${res.token}`)
-        } else return <AlertDialog alert = {Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]}></AlertDialog>
+        } else return console.log(res.error)
       })
   }
   getUserinfor = (token) => {
