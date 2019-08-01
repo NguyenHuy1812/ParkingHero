@@ -70,7 +70,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
               </div>
             </header>
             
-            {/* <section className="page-section bg-primary" id="about">
+            <section className="page-section bg-primary" id="about">
               <div className="container" >
                 <div className="row justify-content-center">
                   <div className = "col-lg-4"  style ={{
@@ -92,7 +92,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
               </div>
             </section>
            
-            <section className="page-section" id="services">
+            {/*<section className="page-section" id="services">
               <div className="container">
                 <h2 className="text-center mt-0">Our Service</h2>
                 <hr className="divider my-4" />
@@ -221,7 +221,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
           </div>
     
     
-          </Row>
+    </Row>
           {/* ################################### */}
   </Container>
 )};
