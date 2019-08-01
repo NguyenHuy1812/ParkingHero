@@ -18,7 +18,7 @@ import {
 } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
 
-const SignIn = ({error, handleSubmit, handleChange, user, token, checkAcessToken, handleSubmitRegister }) => {
+const SignIn = ({error, error_regis, handleSubmit, handleChange, user, token, checkAcessToken, handleSubmitRegister }) => {
   useEffect(() => {
     checkAcessToken()
   }, [token])
