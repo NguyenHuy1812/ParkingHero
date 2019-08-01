@@ -70,7 +70,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
               </div>
             </header>
             
-            <section className="page-section bg-primary" id="about">
+            {/* <section className="page-section bg-primary" id="about">
               <div className="container" >
                 <div className="row justify-content-center">
                   <div className = "col-lg-4"  style ={{
@@ -212,7 +212,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
             <footer className="bg-light py-5">
               <div className="container">
                 <div className="small text-center text-muted">Copyright © 2019 - Hero Park</div>
