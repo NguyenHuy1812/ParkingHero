@@ -114,9 +114,9 @@ class App extends React.Component {
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else return  <AlertDialog> { Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]}</AlertDialog>
+       }        else return  <AlertDialog></AlertDialog>
       })
-    
+    //{Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]} 
   }
   loginUser = (username, password) => {
     fetch('https://hero-park.herokuapp.com/user/signin', {
