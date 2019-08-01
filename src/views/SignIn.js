@@ -105,7 +105,7 @@ const SignIn = ({error, handleSubmit, handleChange, user, token, checkAcessToken
                 <Row>
                   <Col>
                     <Form  >
-                    {error && <Row form style = {{color : 'red'}} >{error} </Row>}
+                    {error_regis && <Row form style = {{color : 'red'}} >{error} </Row>}
                       <Row form >
                         <Col md="6" className="form-group">
                           <label htmlFor="feEmailAddress">Username:  </label>
