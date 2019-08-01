@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import routes from "./routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
-import Alert from "./components/components-overview/Alert"
+import AlertDialog from "./components/components-overview/Alert"
 
 
 class App extends React.Component {
@@ -114,7 +114,7 @@ class App extends React.Component {
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else return  <Alert> {Object.keys(res)[0].slice(1) + ': ' +res[Object.keys(res)[0]][0])}</Alert>
+       }        else return  <AlertDialog> { Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]}</AlertDialog>
       })
     
   }
