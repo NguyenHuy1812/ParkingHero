@@ -53,7 +53,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
       {/* ######################################## */}
     
       {/* ######################################## */}
-      <div className = "container w-100">
+      <div className = "w-100">
            
             <header className="masthead">
               <div className="container h-100">
