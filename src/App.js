@@ -4,13 +4,13 @@ import routes from "./routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.min.css";
 import Alert from "./components/components-overview/Alert"
-import AlertDialog from "./components/components-overview/Alert";
 
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      error: '',
       transaction:'',
       building: '',
       data: '',
@@ -115,7 +115,7 @@ class App extends React.Component {
       .then(res => {if(res ==="success!"){
         alert('success sign-up! You will log in now')
         this.loginUser(susername, spassword)
-       }        else return  <AlertDialog></AlertDialog>
+       }        else return  alert((Object.keys(res)[0]).slice(1) + ': ' +res[Object.keys(res)[0]][0])
       })
     
   }
@@ -133,7 +133,7 @@ class App extends React.Component {
         if (res.status === 'ok') {
           alert('Login!!!!!!!!!!!')
           return window.location.replace(`https://hero-park.netlify.com/sign-in?api_key=${res.token}`)
-        } else return console.log(res.error)
+        } else return this.setState({...this.state, error : res.error})
       })
   }
   getUserinfor = (token) => {

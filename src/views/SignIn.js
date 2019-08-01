@@ -18,7 +18,7 @@ import {
 } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
 
-const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, handleSubmitRegister }) => {
+const SignIn = ({error, handleSubmit, handleChange, user, token, checkAcessToken, handleSubmitRegister }) => {
   useEffect(() => {
     checkAcessToken()
   }, [token])
@@ -51,6 +51,7 @@ const SignIn = ({ handleSubmit, handleChange, user, token, checkAcessToken, hand
                 <Row>
                   <Col>
                     <Form >
+                      {error && <Row >{error} </Row>}
                       <Row form>
                         <Col md="6">
                           <label htmlFor="feEmailAddress">Username : </label>
