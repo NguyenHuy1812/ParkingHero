@@ -53,7 +53,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
       {/* ######################################## */}
     
       {/* ######################################## */}
-      <div>
+      <div className = "container h-100 w-100">
            
             <header className="masthead">
               <div className="container h-100">
@@ -70,7 +70,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
               </div>
             </header>
             
-            <section className="page-section bg-primary" id="about">
+            {/* <section className="page-section bg-primary" id="about">
               <div className="container" >
                 <div className="row justify-content-center">
                   <div className = "col-lg-4"  style ={{
@@ -90,7 +90,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
            
             {/*<section className="page-section" id="services">
               <div className="container">
