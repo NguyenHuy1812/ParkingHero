@@ -132,7 +132,7 @@ class App extends React.Component {
         if (res.status === 'ok') {
           alert('Login!!!!!!!!!!!')
           return window.location.replace(`https://hero-park.netlify.com/sign-in?api_key=${res.token}`)
-        } else return console.log(res.error)
+        } else return <AlertDialog alert = {Object.keys(res)[0].slice(1) + ': ' + res[Object.keys(res)[0]][0]}></AlertDialog>
       })
   }
   getUserinfor = (token) => {
