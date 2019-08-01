@@ -6,8 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-export default function AlertDialog() {
-  const [open, setOpen] = React.useState(false);
+export default function AlertDialog({alert}) {
+  const [open, setOpen] = React.useState(true);
 
   function handleClickOpen() {
     setOpen(true);
@@ -19,28 +19,22 @@ export default function AlertDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button>
+      
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Can't to Login"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            {alert}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Agree
+            Retry
           </Button>
         </DialogActions>
       </Dialog>

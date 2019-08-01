@@ -13,6 +13,7 @@ import {
 
 } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
+import AlertDialog from "../components/components-overview/Alert"
 
 const Index = ({handleSubmit, handleChange, user }) => {
   return (
@@ -69,28 +70,7 @@ const Index = ({handleSubmit, handleChange, user }) => {
                 </div>
               </div>
             </header>
-            
-            {/* <section className="page-section bg-primary" id="about">
-              <div className="container" >
-                <div className="row justify-content-center">
-                  <div className = "col-lg-4"  style ={{
-              backgroundImage:'url("../img/img7.jpg")',
-              // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundAttachment: 'scroll',
-              backgroundZize: 'cover',
-              width: '100%'
-            }}></div>
-                  <div className="col-lg-8 text-center">
-                    <h2 className="text-white mt-0">We've got what you need!</h2>
-                    <hr className="divider light my-4" />
-                    <p className="text-white mb-4">Hero Park have fully solution for every problems with parking lots that you met!!!</p>
-                    <a className="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-                  </div>
-                </div>
-              </div>
-            </section> */}
+        
            
             {/*<section className="page-section" id="services">
               <div className="container">
