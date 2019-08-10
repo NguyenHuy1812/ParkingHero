@@ -63,7 +63,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                   <h5 className="card-title">
                     {park.transaction && park.transaction[0] && park.transaction.filter(trans => trans.status == 'Checkin').length > 0 ?
                       <a className="text-fiord-blue" >
-                      Checkin: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                      Checkin: {moment(park.transaction[0].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
                       </a>
                       :
                       <a className="text-fiord-blue" >
@@ -114,7 +114,7 @@ const BlogOverview = ({getUserinfor, token, data, user, checkOut,checkIn,bookLot
                                 Book by:  {park.owneruser.name}
                               </h5>
                               <h5>
-                              Time check-in: {moment(park.transaction[park.transaction.length - 1].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
+                              Time check-in: {moment(park.transaction[0].time_check_in).utc().format('DD-MM-YYYY HH:mm:ss')}
                              </h5>
                               </Col>
                                 </Row>
