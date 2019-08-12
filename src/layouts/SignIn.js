@@ -6,15 +6,16 @@ import MainFooter from "../components/layout/MainFooter";
 
 const SignInLayout = ({ children, noNavbar, noFooter }) => (
   <Container
-  style ={{
-    backgroundImage:'url("../img/hero.jpg")',
-    // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'scroll',
-    backgroundZize: 'cover',
-    width: '100%'
-  }}>
+  // style ={{
+  //   backgroundImage:'url("../img/hero.jpg")',
+  //   // background: 'linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/hero.jpg")',
+  //   backgroundPosition: 'center',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundAttachment: 'scroll',
+  //   backgroundZize: 'cover',
+  //   width: '100%'
+  // }}
+  >
     <Row>
       {/* <MainSidebar /> */}
       <Col
